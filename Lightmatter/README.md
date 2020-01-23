@@ -15,3 +15,7 @@ Starts and resets the timer at the same time when pressing "Retry" in a level. S
 *Discord: [discord.gg/lightmatter](https://discord.gg/lightmatter)*  
 *Website: [tunnelvisiongames.com](http://tunnelvisiongames.com)*  
 *Game: [store.steampowered.com/app/994140](https://store.steampowered.com/app/994140) ($19.99)*
+​  
+​  
+​
+### Contact Ero#6117 on Discord if there are issues!
