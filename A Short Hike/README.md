@@ -14,6 +14,6 @@ Can occasionally mess up and not start/ end, or split randomly. Please inform Er
 *Discord: [discord.gg/fN6r9w6](https://discord.gg/fN6r9w6)*  
 *Website: [ashorthike.com](http://ashorthike.com)*  
 *Game: [store.steampowered.com/app/1055540](https://store.steampowered.com/app/1055540) ($7.99)*
-
-
+  
+  
 ### Contact Ero#6117 on Discord if there are issues!
