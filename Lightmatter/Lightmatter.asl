@@ -58,7 +58,3 @@ reset {
 		return (old.level_number != 0 && current.level_number == 0);
 	}
 }
-
-isLoading {
-	return current.total_timer == old.total_timer;
-}
