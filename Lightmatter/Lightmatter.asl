@@ -3,7 +3,7 @@
 state("LightmatterSub") {
     int level_number : "UnityPlayer.dll", 0x16488D0, 0x178, 0xC8, 0x10, 0x60, 0xA0;
 	int start_value  :  "fmodstudio.dll", 0x02B3CF0, 0x108, 0x10, 0x0, 0x28;
-	int switches     : "UnityPlayer.dll", 0x1646CD8, 0x78, 0x78, 0xC0, 0x1A0, 0x3C;
+	int switches     : "UnityPlayer.dll", 0x162F600, 0x1E0, 0x78, 0x190, 0x80, 0x3C;
 	float total_timer: "UnityPlayer.dll", 0x1646CD8, 0x78, 0x78, 0xC0, 0x1A0, 0x4;
 	float level_timer: "UnityPlayer.dll", 0x1646CD8, 0x78, 0x78, 0xC0, 0x1A0, 0x0;
 }
@@ -25,6 +25,13 @@ update {
 	vars.line = vars.reader.ReadLine();
 	if (vars.line != null && vars.line.StartsWith("TA_SetPlayerMovementSpeed: ")) {
 		vars.movementSpeed = vars.line.Split(' ')[1];
+		print(">>>>> movement speed changed to " + vars.movementSpeed);
+	}
+	if (old.level_number != current.level_number) {
+		print(">>>>> level changed from " + old.level_number + " to " + current.level_number);
+	}
+	if (old.switches != current.switches) {
+		print(">>>>> switches changed from " + old.switches + " to " + current.switches);
 	}
 }
 
