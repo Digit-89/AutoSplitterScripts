@@ -53,9 +53,9 @@ reset {
 	if (settings["iltimer"]) {
 		return
 			(current.level_timer < old.level_timer && current.level_number == vars.currentLevel) ||
-			(old.start_value == 2 && current.start_value == 3);
+			(old.level_number != 0 && current.level_number == 0);
 	} else {
-		return (old.start_value == 2 && current.start_value == 3);
+		return (old.level_number != 0 && current.level_number == 0);
 	}
 }
 
