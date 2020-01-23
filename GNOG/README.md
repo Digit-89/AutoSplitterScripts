@@ -1,4 +1,4 @@
-# LS-Autosplit_GNOG
+# GNOG Autosplitter
 ## Information
 An autosplitter for GNOG.
 
