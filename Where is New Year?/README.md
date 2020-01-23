@@ -29,3 +29,7 @@ At least 33 splits needed, one manual.
 *Leaderboards: [speedrun.com/where_is_new_year](https://speedrun.com/where_is_new_year)*  
 *Discord: [discord.gg/xxe8cNG](https://discord.gg/xxe8cNG)*  
 *Website: [mateuszskutnik.itch.io](https://mateuszskutnik.itch.io)*
+​  
+​  
+​
+### Contact Ero#6117 on Discord if there are issues!
