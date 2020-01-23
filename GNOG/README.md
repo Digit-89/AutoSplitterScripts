@@ -1,6 +1,7 @@
 # LS-Autosplit_GNOG
 ## Information
-An autosplitter for GNOG.  
+An autosplitter for GNOG.
+
 Starts the timer perfectly. Splits each time a level is completed. Option to reset each time the game is closed is available in the settings. Does not split at the end of a run.
 ## Instructions
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...  
