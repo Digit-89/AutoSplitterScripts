@@ -9,6 +9,5 @@ A collection of multiple autosplitter components for the speedrun timer software
 * **[The Spectrum Retreat](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Spectrum%20Retreat/README.md)**  
 * **[Where is New Year? Series](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Where%20is%20New%20Year%3F/README.md)**  
 ​  
-​  
 ​
 ### Contact Ero#6117 on Discord if there are issues!
