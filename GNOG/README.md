@@ -4,9 +4,9 @@ An autosplitter for GNOG.
 
 Starts the timer. Splits each time a level is completed. Option to reset each time the game is closed is available in the settings. Does not split at the end of a run.
 ## Instructions
-* open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...  
-* make sure the game name is set to "GNOG"  
-* above your splits, an "Activate" button will appear, which you need to click  
+* open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
+* make sure the game name is set to "GNOG"
+* above your splits, an "Activate" button will appear, which you need to click
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/gnog](https://speedrun.com/gnog)*  
