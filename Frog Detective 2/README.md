@@ -14,3 +14,7 @@ Does not split perfectly at the end of a run.
 *Discord: https://discordapp.gg/czC4PZW*  
 *Website: https://frogdetective.net*  
 *Game: https://store.steampowered.com/app/1047220 ($4.49)*
+​  
+​  
+​
+### Contact Ero#6117 on Discord if there are issues!
