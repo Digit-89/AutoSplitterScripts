@@ -2,7 +2,7 @@
 ## Information
 An autosplitter for Frog Detective 2: The Case of the Invisible Wizard.
 
-Does not start the timer. Splits can be chosen in the settings. Removes loads (compare against game time).  
+Does not start the timer. Splits can be chosen in the settings. Removes loads (set Comparison to Game Time).  
 Does not split perfectly at the end of a run.
 ## Instructions
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
