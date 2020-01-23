@@ -12,3 +12,7 @@ Starts the timer. Splits each time a level is completed. Option to reset each ti
 *Leaderboards: [speedrun.com/gnog](https://speedrun.com/gnog)*  
 *Website: [gnoggame.com](https://gnoggame.com)*  
 *Game: [store.steampowered.com/app/290510](https://store.steampowered.com/app/290510) ($9.99)*
+​  
+​  
+​
+### Contact Ero#6117 on Discord if there are issues!
