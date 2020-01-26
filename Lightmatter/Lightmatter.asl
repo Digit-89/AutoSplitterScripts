@@ -42,8 +42,8 @@ exit {
 start {
 	if (settings["iltimer"]) {
 		if (current.level_timer < old.level_timer) {
-			return true;
 			vars.currentLevel = current.level_number;
+			return true;
 		}
 	} else {
 		return (old.start_value == 3 && current.start_value == 2 && current.level_number == 0);
