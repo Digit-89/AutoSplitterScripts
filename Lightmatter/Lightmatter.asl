@@ -40,7 +40,7 @@ exit {
 }
 
 start {
-	if (settings["iltimer"]) {
+	if (settings["iltimer"] && current.start_value != 3) {
 		if (current.level_timer < old.level_timer) {
 			vars.currentLevel = current.level_number;
 			return true;
@@ -57,11 +57,11 @@ split {
 }
 
 reset {
-	if (settings["iltimer"]) {
-		return
-			(current.level_timer < old.level_timer && current.level_number == vars.currentLevel) ||
-			(old.level_number != 0 && current.level_number == 0);
-	} else {
+	if (settings["iltimer"] && current.level_number == vars.currentLevel) {
+		return current.level_timer < old.level_timer;
+	} else if (settings["iltimer"] && current.level_number == 0 && old.level_number != 0) {
+		return true;
+	 } else {
 		return (old.level_number != 0 && current.level_number == 0);
 	}
 }
