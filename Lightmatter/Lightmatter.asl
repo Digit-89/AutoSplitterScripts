@@ -1,4 +1,4 @@
-// For Lightmatter Version 1.05
+// For Lightmatter Version 1.09
 
 state("LightmatterSub") {
     int level_number : "mono-2.0-bdwgc.dll", 0x0490A68, 0x50, 0x140, 0x58, 0xA0;
@@ -57,11 +57,7 @@ split {
 }
 
 reset {
-	if (settings["iltimer"]) {
-		return
-			(current.level_timer < old.level_timer && current.level_number == vars.currentLevel) ||
-			(old.level_number != 0 && current.level_number == 0);
-	} else {
-		return (old.level_number != 0 && current.level_number == 0);
-	}
+	return
+		(old.level_number != 0 && current.level_number == 0) ||
+		(current.level_number == 0 && old.start_value == 2 && current.start_value == 3);
 }
