@@ -4,7 +4,7 @@ An autosplitter for Lightmatter.
 ### Full Game
 Starts the timer when level 1 is chosen from the main menu. Splits every time a new level is entered and when the final switch is activated. Resets when quitting to the main menu from any level.
 ### Individual Levels
-Starts and resets the timer at the same time when pressing "Retry" in a level. Splits when the end of a level is reached. Fully resets when quitting to the main menu from any level.
+Starts the timer at the same time when pressing "Retry" in a level. Splits when the end of a level is reached. Fully resets when quitting to the main menu from any level. Resets must be manual.
 ## Instructions
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Lightmatter"
