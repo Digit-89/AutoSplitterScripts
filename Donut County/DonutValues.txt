@@ -1,0 +1,23 @@
+Level Values: UnityPlayer.dll+149E6B0
+
+Mira's House		- 241 -> 193
+Potter's Rock		- 435 -> 49
+Ranger Station		- 489 -> 49
+Riverbed		- 163 -> 49 
+Campground		- 175 -> 49
+Hopper Springs		- 207 -> 49
+Joshua Tree		- 173 -> 49
+Beach Lot C		- 97 -> 49
+Gecko Park		- 235 -> 49
+Chicken Barn		- 191 -> 49
+Honey Nut Forest	- 141 -> 49
+Cat Soup		- 393 -> 49
+Donut Shop		- 201 -> 27
+Abandoned House		- 215 -> 27
+Raccoon Lagoon		- 291 -> 27
+The 405			- 499 -> 27
+Above Donut County	- 35 -> 63
+Raccoon HQ		- 63 -> 75
+Biology Lab		- 183 -> 69
+Anthropology Lab	- 165 -> 31
+Trash King's Office	- 51 -> 171
