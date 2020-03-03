@@ -40,9 +40,3 @@ split {
 		return (settings[old.level.ToString()]);
 	}
 }
-
-reset {
-	return
-		(old.screen == 44 && current.screen == 48) ||
-		(old.screen == 43 && current.screen == 47);
-}
