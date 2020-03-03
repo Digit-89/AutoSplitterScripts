@@ -29,7 +29,9 @@ startup {
 }
 
 start {
-	return old.screen == 48 && current.screen == 47;
+	return
+		(old.screen == 48 && current.screen == 47) ||
+		(old.screen == 47 && current.screen == 46);
 }
 
 split {
@@ -40,5 +42,7 @@ split {
 }
 
 reset {
-	return old.screen == 44 && current.screen == 48;
+	return
+		(old.screen == 44 && current.screen == 48) ||
+		(old.screen == 43 && current.screen == 47);
 }
