@@ -1,5 +1,6 @@
 state("DonutCounty") {
-	int level: "UnityPlayer.dll", 0x149E6B0;
+	int level : "UnityPlayer.dll", 0x149E6B0;
+	int screen: "UnityPlayer.dll", 0x146FD20, 0x240, 0x240, 0x388;
 }
 
 startup {
@@ -27,9 +28,17 @@ startup {
 		settings.Add("51", false, "Trash King's Office", "splits");
 }
 
+start {
+	return old.screen == 48 && current.screen == 47;
+}
+
 split {
 	if (current.level != old.level) {
 		print("got " + old.level + " with setting: " + settings[old.level.ToString()]);
 		return (settings[old.level.ToString()]);
 	}
+}
+
+reset {
+	return old.screen == 44 && current.screen == 48;
 }
