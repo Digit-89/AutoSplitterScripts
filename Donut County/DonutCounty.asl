@@ -33,7 +33,7 @@ start {
 }
 
 split {
-	if (current.level != old.level) {
+	if (current.level != old.level && current.level != 241) {
 		print("got " + old.level + " with setting: " + settings[old.level.ToString()]);
 		return (settings[old.level.ToString()]);
 	}
