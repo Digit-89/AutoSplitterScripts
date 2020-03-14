@@ -2,7 +2,7 @@
 ## Information
 A load remover for Hello Neighbor.
 
-Pauses the timer upon every loading screen. Starts the timer when the player exits a cutscene. Does not split. Does not reset the timer.
+Pauses the timer during every loading screen. Starts the timer when the player exits a cutscene. Does not split. Does not reset the timer.
 ## Instructions
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Hello Neighbor"
