@@ -5,6 +5,7 @@ A collection of multiple autosplitter components for the speedrun timer software
 * **[A Short Hike](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/A%20Short%20Hike/README.md)**  
 * **[Frog Detective 2: The Case of the Invisible Wizard](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Frog%20Detective%202/README.md)**  
 * **[GNOG](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/GNOG/README.md)**  
+* **[Hello Neighbor](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Hello%20Neighbor/README.md)**  
 * **[Lightmatter](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Lightmatter/README.md)**  
 * **[The Pedestrian](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Pedestrian/README.md)**
 * **[The Spectrum Retreat](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Spectrum%20Retreat/README.md)**  
