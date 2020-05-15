@@ -5,7 +5,7 @@ state("AndAllWouldCryBeware") {
 
 startup {
     settings.Add("areasplits", true, "Split when entering a new area");
-        settings.Add("7to21", true, "Wayfarer Offices", "areasplits");
+        settings.Add("7to21", false, "Wayfarer Offices", "areasplits");
         settings.Add("21to27", true, "Mysterious Alien World", "areasplits");
         settings.Add("16to11", true, "A Fresh Start", "areasplits");
 
