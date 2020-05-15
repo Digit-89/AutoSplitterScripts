@@ -27,6 +27,7 @@ init {
 update {
     if (old.area != current.area && vars.allRealAreas.Contains(current.area)) {
         vars.storeNewArea = current.area;
+        print(">>>>> storeNewArea changed to " + vars.storeNewArea);
     }
 }
 
@@ -46,6 +47,8 @@ split {
             return true;
         } else if (vars.allRealAreas.Contains(vars.lastRealArea) && vars.storeNewArea == 21 ||
                    vars.allRealAreas.Contains(vars.lastRealArea) && vars.storeNewArea == 27) {
+            vars.lastRealArea = vars.storeNewArea;
+        } else if (vars.lastRealArea == 27 && vars.storeNewArea == 16) {
             vars.lastRealArea = vars.storeNewArea;
         }
     }
