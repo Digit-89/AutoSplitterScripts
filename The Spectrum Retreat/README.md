@@ -2,7 +2,7 @@
 ## Information
 An autosplitter for The Spectrum Retreat.
 
-Starts the timer. Splits each time a level is completed and at the end of the game. Does not split after level 5_01.
+Splits can be chosen in the settings. Starts the timer 0.5 seconds early (put timer offset to -0.50), splits at the end of the game, resets when starting a new game.
 ## Instructions
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "The Spectrum Retreat"
