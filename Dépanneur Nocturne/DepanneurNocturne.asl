@@ -19,3 +19,7 @@ split {
         old.money < current.money && settings["money+splits"] ||
         old.money > current.money && settings["money-splits"];
 }
+
+reset {
+    return old.state != current.state && current.state == 2;
+}
