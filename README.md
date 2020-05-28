@@ -2,14 +2,16 @@
 A collection of multiple autosplitter components for the speedrun timer software LiveSplit.
 
 ## Games
-* **[A Short Hike](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/A%20Short%20Hike/README.md)**  
-* **[Frog Detective 2: The Case of the Invisible Wizard](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Frog%20Detective%202/README.md)**  
-* **[GNOG](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/GNOG/README.md)**  
-* **[Hello Neighbor](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Hello%20Neighbor/README.md)**  
-* **[Lightmatter](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Lightmatter/README.md)**  
-* **[The Pedestrian](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Pedestrian/README.md)**
-* **[The Spectrum Retreat](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Spectrum%20Retreat/README.md)**  
-* **[Where is New Year? Series](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Where%20is%20New%20Year%3F/README.md)**  
+* **[And All Would Cry Beware!](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/And%20All%20Would%20Cry%20Beware!)**  
+* **[Donut County](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Donut%20County)**  
+* **[Dépanneur Nocturne](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/D%C3%A9panneur%20Nocturne)**  
+* **[Frog Detective 2: The Case of the Invisible Wizard](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Frog%20Detective%202)**  
+* **[GNOG](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/GNOG)**  
+* **[Hello Neighbor](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Hello%20Neighbor)**  
+* **[Lightmatter](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Lightmatter)**  
+* **[The Pedestrian](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Pedestrian)**
+* **[The Spectrum Retreat](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/The%20Spectrum%20Retreat)**  
+* **[Where is New Year? Series](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Where%20is%20New%20Year%3F)**  
 ​  
 ​
 ### Contact Ero#6117 on Discord if there are issues!
