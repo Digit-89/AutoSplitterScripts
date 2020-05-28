@@ -9,7 +9,7 @@ Splits can be chosen in the settings. Starts the timer after the initial loading
 * above your splits, an "Activate" button will appear, which you need to click
 * done!
 ## Game Links
-*Leaderboards: [speedrun.com/depanneur_nocturne](https://speedrun.com/depanneur_nocturne)*
+*Leaderboards: [speedrun.com/depanneur_nocturne](https://speedrun.com/depanneur_nocturne)*  
 *Website: [ko-op.itch.io/dep-nocturne](https://ko-op.itch.io/dep-nocturne)*  
 *Game: [store.steampowered.com/app/1285160](https://store.steampowered.com/app/1285160) ($4.99)*
 ​  
