@@ -1,5 +1,5 @@
 state("AndAllWouldCryBeware") {
-    int area  : "UnityPlayer.dll", 0x1092D68, 0xE48;
+    int area    : "UnityPlayer.dll", 0x1092D68, 0xE48;
     int entities: "UnityPlayer.dll", 0x10545C0, 0x9CC, 0x28, 0x8, 0x84, 0x210;
 }
 
