@@ -4,7 +4,6 @@ A collection of multiple autosplitter components for the speedrun timer software
 ## Games
 * **[And All Would Cry Beware!](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/And%20All%20Would%20Cry%20Beware!)**  
 * **[Donut County](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Donut%20County)**  
-* **[Dépanneur Nocturne](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/D%C3%A9panneur%20Nocturne)**  
 * **[Frog Detective 2: The Case of the Invisible Wizard](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/Frog%20Detective%202)**  
 * **[GNOG](https://github.com/just-ero/LiveSplit-Autosplitters/tree/master/GNOG)**  
 * **[Hello Neighbor](https://github.com/just-ero/LiveSplit-Autosplitters/blob/master/Hello%20Neighbor)**  
