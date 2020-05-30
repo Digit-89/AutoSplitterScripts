@@ -37,7 +37,5 @@ split {
 }
 
 reset {
-    return
-        old.room != 0 && old.room != 4 && current.room == 0 ||
-        current.room == 0 && current.time > 250 && current.time < 280;
+    return old.room != 0 && old.room != 4 && current.room == 0;
 }
