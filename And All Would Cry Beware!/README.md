@@ -1,6 +1,6 @@
 # And All Would Cry Beware! Autosplitter
 ## Information
-An autosplitter forAnd All Would Cry Beware!.
+An autosplitter for And All Would Cry Beware!.
 
 Splits can be chosen in the settings. Starts the timer and splits upon reaching the credits. Does not reset the timer.
 ## Instructions
