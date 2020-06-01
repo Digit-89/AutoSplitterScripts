@@ -1,6 +1,6 @@
 state("A Proof of Concept 1.1") {
     int room: 0x6C2DB8;
-    int time: 0x6C2DE0;
+    //int time: 0x6C2DE0;
 }
 
 startup {
