@@ -59,13 +59,13 @@ startup {
         settings.Add("day4time14", true, "Enter Code", "day4splits");
         settings.Add("day4and80to41", true, "Finishing 4_01", "day4splits");
         settings.Add("day4and41to60", true, "Finishing 4_02", "day4splits");
-        settings.Add("day4and0to44", false, "Finishing 4_03", "day4splits");
+        settings.Add("day4and60to44", false, "Finishing 4_03", "day4splits");
         settings.Add("day4and44to41", true, "Finishing 4_04", "day4splits");
         settings.Add("day4and41to46", true, "Finishing 4_05", "day4splits");
         settings.Add("day4and46to66", true, "Finishing 4_06", "day4splits");
         settings.Add("day4and66to65", true, "Finishing 4_07", "day4splits");
         settings.Add("day4and65to10", true, "Arrive back at Hotel (finishing 4_08)", "day4splits");
-        settings.Add("day4and0to113", false, "Taking Elevator to Floor 1", "day4splits");
+        settings.Add("day4and10to113", false, "Taking Elevator to Floor 1", "day4splits");
 
     settings.Add("day5splits", true, "Day 5 splits:");
         settings.Add("day5time7", false, "Wake Up", "day5splits");
@@ -91,6 +91,8 @@ init {
     vars.day = "1";
     vars.date = "";
     vars.roofHelp = 0;
+    vars.lastRealLevel = 0;
+    vars.storeNewLevel = 0;
 
     vars.reader.BaseStream.Seek(0, SeekOrigin.End);
 }
@@ -102,6 +104,12 @@ exit {
 update {
     if (vars.reader == null) return false;
     vars.line = vars.reader.ReadLine();
+
+    if (old.level != current.level && current.level != 0) {
+        vars.lastRealLevel = vars.storeNewLevel;
+        vars.storeNewLevel = current.level;
+        print(">>>>> storeNewLevel changed to " + vars.storeNewLevel + " and lastRealLevel changed to " + vars.lastRealLevel);
+    }
 
     if (vars.line != null && vars.line.StartsWith("Time advanced to ")) {
         vars.time = vars.line.Split(' ')[3];
@@ -135,8 +143,10 @@ split {
         }
     }
 
-    if (old.level != current.level && settings["day" + vars.day.ToString() + "and" + old.level.ToString() + "to" + current.level.ToString()]) {
-        print(">>>>> got split because level changed from " + old.level + " to " + current.level + " and settings is day" + vars.day + "and" + old.level + "to" + current.level);
+    if (old.level != current.level && vars.lastRealLevel != vars.storeNewLevel && settings["day" + vars.day + "and" + vars.lastRealLevel.ToString() + "to" + vars.storeNewLevel.ToString()]) {
+        print(">>>>> got split because settings is is " + vars.lastRealLevel + "to" + vars.storeNewLevel);
+        vars.lastRealLevel = vars.storeNewLevel;
+        print(">>>>> storeNewLevel changed to " + vars.storeNewLevel);
         return true;
     }
 }
