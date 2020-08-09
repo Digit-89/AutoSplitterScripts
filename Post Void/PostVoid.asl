@@ -1,7 +1,7 @@
 state("Post Void") {
     double lvlid: 0x04B2780, 0x2C, 0x10, 0x18, 0x100;
     double fulltime: 0x04B2780, 0x2C, 0x10, 0x18, 0xE0;
-    //double lvltime: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    double lvltime: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
 }
 
 startup {
@@ -31,10 +31,10 @@ start {
 }
 
 split {
-    if (current.lvlid == 10 && old.igt == 0) vars.finalLevel = true;
+    if (current.lvlid == 10 && old.lvltime == 0) vars.finalLevel = true;
     return
         old.lvlid < current.lvlid && settings[old.lvlid + "to" + current.lvlid] ||
-        vars.finalLevel == true && old.igt > 0 && current.igt == 0 && settings["finalSplit"];
+        vars.finalLevel == true && old.lvltime > 0 && current.lvltime == 0 && settings["finalSplit"];
 }
 
 reset {
