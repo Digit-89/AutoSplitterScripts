@@ -31,7 +31,7 @@ start {
 }
 
 split {
-    if (current.lvlid == 10 && old.lvltime == 0) vars.finalLevel = true;
+    if (current.lvlid == 10 && old.lvltime == 0&& current.lvltime > 0) vars.finalLevel = true;
     return
         old.lvlid < current.lvlid && settings[old.lvlid + "to" + current.lvlid] ||
         vars.finalLevel == true && old.lvltime > 0 && current.lvltime == 0 && settings["finalSplit"];
