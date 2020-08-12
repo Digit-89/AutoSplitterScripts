@@ -38,7 +38,7 @@ start {
 split {
     if (current.lvlID == 10 && old.igtLevel == 0 && current.igtLevel > 0) vars.finalLevel = true;
     return
-        old.lvlID < current.lvlID && settings[old.lvlId + "to" + current.lvlId] ||
+        old.lvlID < current.lvlID && settings[old.lvlID + "to" + current.lvlID] ||
         vars.finalLevel == true && old.igtLevel > 0 && current.igtLevel == 0 && settings["finalSplit"];
 }
 
