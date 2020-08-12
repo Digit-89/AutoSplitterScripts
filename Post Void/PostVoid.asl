@@ -1,7 +1,12 @@
 state("Post Void") {
-    double lvlid: 0x04B2780, 0x2C, 0x10, 0x18, 0x100;
-    double fulltime: 0x04B2780, 0x2C, 0x10, 0x18, 0xE0;
-    double lvltime: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    double lvlID: 0x04B2780, 0x2C, 0x10, 0x18, 0x100;
+    double igtFull: 0x04B2780, 0x2C, 0x10, 0x18, 0xE0;
+    double igtLevel: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    //double kills: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    //double hits: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    //double shots: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    //double headshots: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
+    //double hitsTaken: 0x04B2780, 0x2C, 0x10, 0x18, 0xD0;
 }
 
 startup {
@@ -24,21 +29,21 @@ init {
 }
 
 start {
-    if (old.fulltime == 0 && current.fulltime > 0) {
+    if (old.igtFull == 0 && current.igtFull > 0) {
         vars.finalLevel = false;
         return true;
     }
 }
 
 split {
-    if (current.lvlid == 10 && old.lvltime == 0 && current.lvltime > 0) vars.finalLevel = true;
+    if (current.lvlID == 10 && old.igtLevel == 0 && current.igtLevel > 0) vars.finalLevel = true;
     return
-        old.lvlid < current.lvlid && settings[old.lvlid + "to" + current.lvlid] ||
-        vars.finalLevel == true && old.lvltime > 0 && current.lvltime == 0 && settings["finalSplit"];
+        old.lvlID < current.lvlID && settings[old.lvlId + "to" + current.lvlId] ||
+        vars.finalLevel == true && old.igtLevel > 0 && current.igtLevel == 0 && settings["finalSplit"];
 }
 
 reset {
-    return current.fulltime == 0 && old.fulltime > 0;
+    return current.igtFull == 0 && old.igtFull > 0;
 }
 
 isLoading {
@@ -46,5 +51,5 @@ isLoading {
 }
 
 gameTime {
-    if (current.fulltime != 0) return TimeSpan.FromSeconds(current.fulltime);
+    if (current.igtFull != 0) return TimeSpan.FromSeconds(current.igtFull);
 }
