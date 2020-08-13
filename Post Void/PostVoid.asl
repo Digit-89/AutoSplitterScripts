@@ -12,6 +12,7 @@ state("Post Void") {
 
 startup {
     settings.Add("lvlSplits", true, "Choose which level(s) to split on:");
+        settings.Add("99to0", true, "After the Tutorial", "lvlSplits");
         settings.Add("0to1", true, "After Level 1", "lvlSplits");
         settings.Add("1to2", true, "After Level 2", "lvlSplits");
         settings.Add("2to3", true, "After Level 3", "lvlSplits");
@@ -39,12 +40,12 @@ start {
 split {
     if (current.lvlID == 10 && old.igtLvl == 0 && current.igtLvl > 0) vars.finalLevel = true;
     return
-        old.lvlID < current.lvlID && settings[old.lvlID + "to" + current.lvlID] ||
+        old.lvlID != current.lvlID && settings[old.lvlID + "to" + current.lvlID] ||
         vars.finalLevel == true && old.igtLvl > 0 && current.igtLvl == 0 && settings["finalSplit"];
 }
 
 reset {
-    return current.igtFull == 0 && old.igtFull > 0;
+    return old.lvlID != 99 && current.igtFull == 0 && old.igtFull > 0;
 }
 
 isLoading {
