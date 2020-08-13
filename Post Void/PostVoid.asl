@@ -37,10 +37,10 @@ start {
 }
 
 split {
-    if (current.lvlID == 10 && old.igtLevel == 0 && current.igtLevel > 0) vars.finalLevel = true;
+    if (current.lvlID == 10 && old.igtLvl == 0 && current.igtLvl > 0) vars.finalLevel = true;
     return
         old.lvlID < current.lvlID && settings[old.lvlID + "to" + current.lvlID] ||
-        vars.finalLevel == true && old.igtLevel > 0 && current.igtLevel == 0 && settings["finalSplit"];
+        vars.finalLevel == true && old.igtLvl > 0 && current.igtLvl == 0 && settings["finalSplit"];
 }
 
 reset {
