@@ -11,6 +11,8 @@ state("Post Void") {
 }
 
 startup {
+    vars.timerModel = new TimerModel { CurrentState = timer };
+
     settings.Add("lvlSplits", true, "Choose which level(s) to split on:");
         settings.Add("99to0", true, "After the Tutorial", "lvlSplits");
         settings.Add("0to1", true, "After Level 1", "lvlSplits");
@@ -28,6 +30,12 @@ startup {
 
 init {
     vars.finalLevel = false;
+}
+
+exit {
+    if (timer.CurrentPhase != TimerPhase.Ended) {
+        vars.timerModel.Reset();
+    }
 }
 
 start {
