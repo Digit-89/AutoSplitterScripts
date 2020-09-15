@@ -391,7 +391,10 @@ split {
 }
 
 reset {
-  return vars.currentStage == "1-1-0-0";
+  if (vars.currentStage = "1-1-0-0") {
+    vars.currentStage = "1-1-1-1";
+    return true;
+  }
 }
 
 isLoading {
