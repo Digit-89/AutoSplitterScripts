@@ -333,6 +333,7 @@ startup {
       settings.Add("4-6-7-1", false, "Checkpoint 6", "ch4Area5Splits");
       //settings.Add("4-6-7-2", false, "Checkpoint 6, Sub-Checkpoint 1", "ch4Area6Splits");
       settings.Add("4-6-8-1", false, "Checkpoint 7", "ch4Area5Splits");
+      settings.Add("4-6-8-1-stageEnd", true, "Finishing Area 5", "ch4Area5Splits");
     settings.Add("ch4Area6Splits", true, "Area 6 splits:", "ch4Splits");
       settings.Add("4-7-4-1", false, "Checkpoint 1", "ch4Area6Splits");
       //settings.Add("4-7-7-2", false, "Checkpoint 1, Sub-Checkpoint 1", "ch4Area6Splits");
@@ -347,7 +348,7 @@ startup {
       settings.Add("5-1-1-6-stageEnd", true, "Finishing Area 1", "ch5Area1Splits");
     settings.Add("ch5Area2Splits", true, "Area 2 splits:", "ch5Splits");
       settings.Add("5-2-2-1", false, "Checkpoint 1", "ch5Area2Splits");
-      settings.Add("5-2-3-1", false, "Finishing the Run", "ch5Area2Splits");
+      settings.Add("5-2-3-1", true, "Finishing the Run", "ch5Area2Splits");
 }
 
 init {
