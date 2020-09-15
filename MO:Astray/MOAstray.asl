@@ -366,7 +366,8 @@ exit {
 }*/
 
 start {
-  if (vars.currentStage == "1-1-1-1" && old.levelTime == 0.0 && current.levelTime > 0.0) {
+  if ((vars.currentStage == "1-1-0-0" || vars.currentStage == "1-1-0-1" || vars.currentStage == "1-1-1-1") && old.levelTime == 0.0 && current.levelTime > 0.0) {
+    vars.finishedSplits.Clear();
     vars.totalTime = 0;
     return true;
   }
