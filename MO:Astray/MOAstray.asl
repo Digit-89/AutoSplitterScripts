@@ -380,7 +380,7 @@ split {
       current.checkpoint.ToString() + "-" +
       (current.subCheckpoint + 1).ToString();
     print(">>>>> " + vars.currentStage);
-    if (!vars.finishedSplits.Contains(vars.currentStage)) {
+    if (settings[vars.currentStage] && !vars.finishedSplits.Contains(vars.currentStage)) {
       vars.finishedSplits.Add(vars.currentStage);
       return true;
     }
