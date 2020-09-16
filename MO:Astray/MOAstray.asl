@@ -9,6 +9,38 @@ state("MOAstray") {
 
 startup {
   vars.finishedSplits = new HashSet<string>();
+  vars.finalCheckpoints = new List<string>() {
+    {"1-1-8-2"},
+    {"1-2-9-2"},
+    {"1-3-8-2"},
+    {"1-4-8-2"},
+    {"1-5-12-1"},
+    {"1-6-3-2"},
+
+    {"2-1-8-1"},
+    {"2-2-8-5"},
+    {"2-3-9-2"},
+    {"2-4-8-1"},
+    {"2-5-8-1"},
+    {"2-6-0-1"},
+
+    {"3-1-10-1"},
+    {"3-2-12-2"},
+    {"3-3-4-1"},
+    {"3-4-8-1"},
+    {"3-5-4-1"},
+    {"3-6-2-1"},
+
+    {"4-1-8-2"},
+    {"4-2-9-2"},
+    {"4-3-8-4"},
+    {"4-5-10-1"},
+    {"4-6-8-1"},
+    {"4-7-4-1"},
+
+    {"5-1-1-6"},
+    {"5-2-3-1"}
+  };
   vars.timerModel = new TimerModel {CurrentState = timer};
   //vars.cutscenes = new Dictionary<Tuple<string, int>, Tuple<string, int>> {}; // potential use for cutscene timers
   //settings.Add("currStageDisplay", false, "Display current chapter, area, checkpoint, & sub-checkpoint");
@@ -391,7 +423,7 @@ split {
 }
 
 reset {
-  if (vars.currentStage = "1-1-0-0") {
+  if (vars.currentStage == "1-1-0-0") {
     vars.currentStage = "1-1-1-1";
     return true;
   }
@@ -402,7 +434,7 @@ isLoading {
 }
 
 gameTime {
-  if (old.levelTime > 0 && current.levelTime == 0.0)
+  if (old.levelTime > 0 && current.levelTime == 0.0 && vars.finalCheckpoints.Contains(vars.currentStage))
     vars.totalTime += old.levelTime;
 
   return TimeSpan.FromSeconds(vars.totalTime + current.levelTime);
