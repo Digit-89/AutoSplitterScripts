@@ -5,13 +5,14 @@ state("MOAstray") {
   int subCheckpoint: 0x145CDE8, 0x3E8, 0xF8, 0x8, 0x18, 0x10, 0x58, 0x58, 0x20, 0x84;
   //int inCutscene   : "mono.dll", 0x266180, 0x50, 0x7E0, 0x8, 0x20, 0x18, 0x20, 0x80; // broken
   float levelTime  : "mono.dll", 0x262A68, 0x50, 0xF18;
+  double totalTime : "mono.dll", 0x266CB8, 0x230, 0x458, 0x230, 0x80, 0x30, 0x18;
+  //int deathCount   : "mono.dll", 0x266CB8, 0x230, 0x458, 0x230, 0x80, 0x30, 0x20; // totalTime + 0x8
 }
 
 startup {
   vars.finishedSplits = new HashSet<string>();
   vars.timerModel = new TimerModel {CurrentState = timer};
   //vars.cutscenes = new Dictionary<Tuple<string, int>, Tuple<string, int>> {}; // potential use for cutscene timers (currentStage, cutsceneID, cutsceneName, cutsceneLength)
-  settings.Add("currStageDisplay", false, "Display current chapter, area, checkpoint, & sub-checkpoint");
 
   vars.allStages = new List<Tuple<int, int, string, string>> { // creates a list of tuples representing CurrentStage and the corresponding checkpoint (Chapter, Area, CurrentStage, Checkpoint ID)
     Tuple.Create(1, 1, "1-1-2-1", "Checkpoint 1"),
@@ -225,6 +226,7 @@ startup {
     Tuple.Create(5, 2, "5-2-3-1-stageEnd", "Finishing Area 2")
   };
 
+  settings.Add("currStageDisplay", false, "Display current chapter, area, checkpoint, & sub-checkpoint");
   settings.Add("ch1Splits", true, "Chapter 1 — The Birth:");
   settings.Add("ch2Splits", true, "Chapter 2 — The Surface:");
   settings.Add("ch3Splits", true, "Chapter 3 — The Monster:");
@@ -272,9 +274,9 @@ startup {
 }
 
 init {
-  vars.setTextComponent("", "Please reach a valid Checkpoint");
+  if (settings["currStageDisplay"])
+    vars.setTextComponent("", "Please reach a valid Checkpoint");
   vars.currentStage = "1-1-1-1";
-  vars.totalTime = 0;
 }
 
 exit {
@@ -302,7 +304,6 @@ update {
 start {
   if (old.levelTime == 0.0 && current.levelTime > 0.0) {
     vars.finishedSplits.Clear();
-    vars.totalTime = 0;
     return true;
   }
 }
@@ -315,14 +316,13 @@ split {
     }
   }
 
-  return old.levelTime > 0 && current.levelTime == 0.0 && settings[vars.currentStage + "-stageEnd"];
+  return old.totalTime != current.totalTime && current.totalTime != 0.0 && settings[vars.currentStage + "-stageEnd"];
 }
 
 reset {
-  if (vars.currentStage == "1-1-0-0") {
-    vars.currentStage = "1-1-1-1";
-    return true;
-  }
+  return
+    current.chapter == 1 && current.area == 1 && current.checkpoint < 8 && old.levelTime > 0 && current.levelTime == 0.0 ||
+    old.totalTime > 0 && current.totalTime == 0.0;
 }
 
 isLoading {
@@ -330,8 +330,5 @@ isLoading {
 }
 
 gameTime {
-  if (old.levelTime > 0 && current.levelTime == 0.0 && vars.allStages.Contains(new Tuple<int, int, string, string>(current.chapter, current.area, vars.currentStage + "-stageEnd", "Finishing Area " + current.area.ToString())))
-    vars.totalTime += old.levelTime;
-
-  return TimeSpan.FromSeconds(vars.totalTime + current.levelTime);
+  return TimeSpan.FromSeconds(current.totalTime + current.levelTime);
 }
