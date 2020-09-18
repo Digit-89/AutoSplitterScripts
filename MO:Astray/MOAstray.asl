@@ -272,6 +272,7 @@ startup {
 }
 
 init {
+  vars.setTextComponent("", "Please reach a valid Checkpoint");
   vars.currentStage = "1-1-1-1";
   vars.totalTime = 0;
 }
