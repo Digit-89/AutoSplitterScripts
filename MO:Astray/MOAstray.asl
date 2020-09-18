@@ -12,17 +12,16 @@ startup {
   vars.finishedSplits = new HashSet<string>();
   vars.displayCheckpoints = new Dictionary<string, string>();
   vars.timerModel = new TimerModel {CurrentState = timer};
-  //vars.cutscenes = new Dictionary<Tuple<string, int>, Tuple<string, int>> {}; // potential use for cutscene timers
+  //vars.cutscenes = new Dictionary<Tuple<string, int>, Tuple<string, int>> {}; // potential use for cutscene timers (currentStage, cutsceneID, cutsceneName, cutsceneLength)
   settings.Add("currStageDisplay", false, "Display current chapter, area, checkpoint, & sub-checkpoint");
 
   vars.allStages = new List<Tuple<int, int, string, string>> { // creates a list of tuples representing CurrentStage and the corresponding checkpoint (Chapter, Area, CurrentStage, Checkpoint ID)
     Tuple.Create(1, 1, "1-1-2-1", "Checkpoint 1"),
     Tuple.Create(1, 1, "1-1-3-1", "Checkpoint 2"),
     Tuple.Create(1, 1, "1-1-4-1", "Checkpoint 3"),
-    Tuple.Create(1, 1, "1-1-5-1", "Checkpoint 4"),
+    Tuple.Create(1, 1, "1-1-5-2", "Checkpoint 4"),
     Tuple.Create(1, 1, "1-1-6-1", "Checkpoint 5"),
-    Tuple.Create(1, 1, "1-1-7-1", "Checkpoint 6"),
-    Tuple.Create(1, 1, "1-1-8-1", "Checkpoint 7"),
+    Tuple.Create(1, 1, "1-1-8-1", "Checkpoint 6"),
     Tuple.Create(1, 1, "1-1-8-2-stageEnd", "Finishing Area 1"),
 
     Tuple.Create(1, 2, "1-2-2-1", "Checkpoint 1"),
@@ -199,7 +198,10 @@ startup {
     Tuple.Create(4, 3, "4-3-8-4-stageEnd", "Finishing Area 3"),
 
     Tuple.Create(4, 4, "4-4-2-1", "Checkpoint 1"),
-    Tuple.Create(4, 4, "4-5-2-1", "Checkpoint 2"),
+    Tuple.Create(4, 4, "4-5-1-1", "Checkpoint 2 (Boss Start)"),
+    Tuple.Create(4, 4, "4-5-3-1", "Checkpoint 3 (Attack 1 Start)"),
+    Tuple.Create(4, 4, "4-5-6-1", "Checkpoint 4 (Attack 2 Start)"),
+    Tuple.Create(4, 4, "4-5-8-1", "Checkpoint 4 (Attack 2 Start)"),
     Tuple.Create(4, 4, "4-5-10-1-stageEnd", "Finishing Area 4"),
 
     Tuple.Create(4, 5, "4-6-2-1", "Checkpoint 1"),
@@ -258,14 +260,13 @@ startup {
   vars.setTextComponent = (Action<string, string>)((id, text) => {
     var textSettings = timer.Layout.Components.Where(x => x.GetType().Name == "TextComponent").Select(x => x.GetType().GetProperty("Settings").GetValue(x, null));
     var textSetting = textSettings.FirstOrDefault(x => (x.GetType().GetProperty("Text1").GetValue(x, null) as string) == id);
-    if (textSetting == null)
-    {
-    var textComponentAssembly = Assembly.LoadFrom("Components\\LiveSplit.Text.dll");
-    var textComponent = Activator.CreateInstance(textComponentAssembly.GetType("LiveSplit.UI.Components.TextComponent"), timer);
-    timer.Layout.LayoutComponents.Add(new LiveSplit.UI.Components.LayoutComponent("LiveSplit.Text.dll", textComponent as LiveSplit.UI.Components.IComponent));
+    if (textSetting == null) {
+      var textComponentAssembly = Assembly.LoadFrom("Components\\LiveSplit.Text.dll");
+      var textComponent = Activator.CreateInstance(textComponentAssembly.GetType("LiveSplit.UI.Components.TextComponent"), timer);
+      timer.Layout.LayoutComponents.Add(new LiveSplit.UI.Components.LayoutComponent("LiveSplit.Text.dll", textComponent as LiveSplit.UI.Components.IComponent));
 
-    textSetting = textComponent.GetType().GetProperty("Settings", BindingFlags.Instance | BindingFlags.Public).GetValue(textComponent, null);
-    textSetting.GetType().GetProperty("Text1").SetValue(textSetting, id);
+      textSetting = textComponent.GetType().GetProperty("Settings", BindingFlags.Instance | BindingFlags.Public).GetValue(textComponent, null);
+      textSetting.GetType().GetProperty("Text1").SetValue(textSetting, id);
     }
 
     if (textSetting != null)
@@ -274,7 +275,6 @@ startup {
 }
 
 init {
-  vars.setTextComponent("", "Please enter a new Checkpoint");
   vars.currentStage = "1-1-1-1";
   vars.totalTime = 0;
 }
@@ -285,14 +285,19 @@ exit {
 }
 
 update {
+  vars.currentStage =
+    current.chapter.ToString() + "-" +
+    current.area.ToString() + "-" +
+    current.checkpoint.ToString() + "-" +
+    (current.subCheckpoint + 1).ToString();
+
   if (settings["currStageDisplay"]) {
-  string value = "";
-    if (vars.displayCheckpoints.TryGetValue(current.chapter.ToString() + "-" + current.area.ToString() + "-" + current.checkpoint.ToString() + "-" + (current.subCheckpoint + 1).ToString(), out value)) {
-      vars.setTextComponent("", "Ch. " + current.chapter + ", Area " + current.area + ", " + value);
-    } else {
-      vars.setTextComponent("", "Not on a valid Checkpoint");
+    if (((IEnumerable<Tuple<int, int, string, string>>)vars.allStages).Any(x => x.Item3.Equals(vars.currentStage))) {
+      string output = "Ch. " + current.chapter + "–" + current.area + ", " + ((IEnumerable<Tuple<int, int, string, string>>)vars.allStages).Where(x => x.Item3.Equals(vars.currentStage)).FirstOrDefault().Item4 ?? "Not on a valid Checkpoint";
+      vars.setTextComponent("", output);
     }
   }
+
   //print(timer.CurrentTime.RealTime.Value.TotalSeconds.ToString());
 }
 
@@ -306,13 +311,6 @@ start {
 
 split {
   if (old.chapter != current.chapter || old.area != current.area || old.checkpoint != current.checkpoint || old.subCheckpoint != current.subCheckpoint) {
-    vars.currentStage =
-      current.chapter.ToString() + "-" +
-      current.area.ToString() + "-" +
-      current.checkpoint.ToString() + "-" +
-      (current.subCheckpoint + 1).ToString();
-    print(">>>>> " + vars.currentStage);
-
     if (settings[vars.currentStage] && !vars.finishedSplits.Contains(vars.currentStage)) {
       vars.finishedSplits.Add(vars.currentStage);
       return true;
