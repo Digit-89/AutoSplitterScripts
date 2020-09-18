@@ -8,9 +8,7 @@ state("MOAstray") {
 }
 
 startup {
-  vars.stageSplitter = "";
   vars.finishedSplits = new HashSet<string>();
-  vars.displayCheckpoints = new Dictionary<string, string>();
   vars.timerModel = new TimerModel {CurrentState = timer};
   //vars.cutscenes = new Dictionary<Tuple<string, int>, Tuple<string, int>> {}; // potential use for cutscene timers (currentStage, cutsceneID, cutsceneName, cutsceneLength)
   settings.Add("currStageDisplay", false, "Display current chapter, area, checkpoint, & sub-checkpoint");
