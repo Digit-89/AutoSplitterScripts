@@ -310,8 +310,8 @@ start {
 
 split {
   if (old.chapter != current.chapter || old.area != current.area || old.checkpoint != current.checkpoint || old.subCheckpoint != current.subCheckpoint) {
+    //print(">>>>> " + vars.currentStage);
     if (settings[vars.currentStage] && !vars.finishedSplits.Contains(vars.currentStage)) {
-      print(">>>>> " + vars.currentStage);
       vars.finishedSplits.Add(vars.currentStage);
       return true;
     }
