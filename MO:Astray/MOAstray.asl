@@ -311,15 +311,13 @@ start {
 split {
   if (old.chapter != current.chapter || old.area != current.area || old.checkpoint != current.checkpoint || old.subCheckpoint != current.subCheckpoint) {
     if (settings[vars.currentStage] && !vars.finishedSplits.Contains(vars.currentStage)) {
+      print(">>>>> " + vars.currentStage);
       vars.finishedSplits.Add(vars.currentStage);
       return true;
     }
   }
 
-  if (old.totalTime != current.totalTime && current.totalTime != 0.0 && settings[vars.currentStage + "-stageEnd"]) {
-    print(">>>>> should stageEnd split! (" + vars.currentStage + "-stageEnd)");
-    return true;
-  }
+  return old.levelTime > 0 && current.levelTime == 0.0 && settings[vars.currentStage + "-stageEnd"];
 }
 
 reset {
