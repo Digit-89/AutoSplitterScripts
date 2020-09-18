@@ -244,7 +244,6 @@ startup {
   }
 
   foreach (var cp in vars.allStages) {
-    vars.displayCheckpoints.Add(cp.Item3, cp.Item4);
     string[] stageSplitter = cp.Item3.Split('-');
     //print(stageSplitter[stageSplitter.Length - 1]);
     if (stageSplitter[stageSplitter.Length - 1] == "stageEnd") {
