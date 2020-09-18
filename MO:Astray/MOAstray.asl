@@ -5,8 +5,8 @@ state("MOAstray") {
   int subCheckpoint: 0x145CDE8, 0x3E8, 0xF8, 0x8, 0x18, 0x10, 0x58, 0x58, 0x20, 0x84;
   //int inCutscene   : "mono.dll", 0x266180, 0x50, 0x7E0, 0x8, 0x20, 0x18, 0x20, 0x80; // broken
   float levelTime  : "mono.dll", 0x262A68, 0x50, 0xF18;
-  double totalTime : "mono.dll", 0x266CB8, 0x230, 0x458, 0x230, 0x80, 0x30, 0x18;
-  //int deathCount   : "mono.dll", 0x266CB8, 0x230, 0x458, 0x230, 0x80, 0x30, 0x20; // totalTime + 0x8
+  double totalTime : "mono.dll", 0x296BC8, 0x20, 0x6A8, 0x0, 0x30, 0x30, 0x18;
+  //int deathCount   : "mono.dll", 0x296BC8, 0x20, 0x6A8, 0x0, 0x30, 0x30, 0x20; // totalTime + 0x8
 }
 
 startup {
@@ -316,7 +316,10 @@ split {
     }
   }
 
-  return old.totalTime != current.totalTime && current.totalTime != 0.0 && settings[vars.currentStage + "-stageEnd"];
+  if (old.totalTime != current.totalTime && current.totalTime != 0.0 && settings[vars.currentStage + "-stageEnd"]) {
+    print(">>>>> should stageEnd split! (" + vars.currentStage + "-stageEnd)");
+    return true;
+  }
 }
 
 reset {
