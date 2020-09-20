@@ -271,6 +271,9 @@ startup {
     if (textSetting != null)
     textSetting.GetType().GetProperty("Text2").SetValue(textSetting, text);
   });
+
+  if (settings["currStageDisplay"])
+    vars.setTextComponent("", "Please start the Game");
 }
 
 init {
