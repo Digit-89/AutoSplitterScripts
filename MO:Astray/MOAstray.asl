@@ -323,7 +323,7 @@ split {
 reset {
   return
     current.chapter == 1 && current.area == 1 && current.checkpoint < 8 && old.levelTime > 0 && current.levelTime == 0.0 ||
-    old.totalTime > 0 && current.totalTime == 0.0;
+    old.totalTime > 0 && current.totalTime == 0.0 && !(current.chapter == 5 && current.area == 2);
 }
 
 isLoading {
