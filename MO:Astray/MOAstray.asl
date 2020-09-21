@@ -317,7 +317,9 @@ split {
     }
   }
 
-  return old.levelTime > 0 && current.levelTime == 0.0 && settings[vars.currentStage + "-stageEnd"];
+  return
+    old.levelTime > 0 && current.levelTime == 0.0 && settings[vars.currentStage + "-stageEnd"] ||
+    old.totalTime > 0 && current.totalTime == 0.0 && current.chapter == 5 && current.area == 2;
 }
 
 reset {
