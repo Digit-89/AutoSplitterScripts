@@ -276,7 +276,7 @@ startup {
 init {
   if (settings["currStageDisplay"])
     vars.setTextComponent("", "Please reach a valid Checkpoint");
-  vars.currentStage = "1-1-1-1";
+  vars.finalTime = 0;
 }
 
 exit {
@@ -295,6 +295,8 @@ update {
     if (((IEnumerable<Tuple<int, int, string, string>>)vars.allStages).Any(x => x.Item3.Equals(vars.currentStage))) {
       string output = "Ch. " + current.chapter + "–" + current.area + ", " + ((IEnumerable<Tuple<int, int, string, string>>)vars.allStages).Where(x => x.Item3.Equals(vars.currentStage)).FirstOrDefault().Item4 ?? "Not on a valid Checkpoint";
       vars.setTextComponent("", output);
+    } else {
+      vars.setTextComponent("", "Not considered a Checkpoint");
     }
   }
 
@@ -304,6 +306,7 @@ update {
 start {
   if (old.levelTime == 0.0 && current.levelTime > 0.0) {
     vars.finishedSplits.Clear();
+    vars.finalTime = 0;
     return true;
   }
 }
@@ -317,9 +320,13 @@ split {
     }
   }
 
+  if (old.totalTime > 0 && current.totalTime == 0.0 && current.chapter == 5 && current.area == 2) {
+    vars.finalTime = old.totalTime + old.levelTime;
+    return true;
+  }
+
   return
-    old.levelTime > 0 && current.levelTime == 0.0 && settings[vars.currentStage + "-stageEnd"] ||
-    old.totalTime > 0 && current.totalTime == 0.0 && current.chapter == 5 && current.area == 2;
+    old.levelTime > 0 && current.levelTime == 0.0 && settings[vars.currentStage + "-stageEnd"];
 }
 
 reset {
@@ -333,5 +340,8 @@ isLoading {
 }
 
 gameTime {
-  return TimeSpan.FromSeconds(current.totalTime + current.levelTime);
+  if (vars.finalTime != 0)
+    return TimeSpan.FromSeconds(vars.finalTime);
+  else
+    return TimeSpan.FromSeconds(current.totalTime + current.levelTime);
 }
