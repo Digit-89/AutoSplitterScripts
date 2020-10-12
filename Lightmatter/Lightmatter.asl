@@ -27,12 +27,8 @@ update {
     vars.movementSpeed = vars.line.Split(' ')[1];
     print(">>>>> movement speed changed to " + vars.movementSpeed);
   }
-  if (old.level_number != current.level_number) {
-    print(">>>>> level changed from " + old.level_number + " to " + current.level_number);
-  }
-  if (old.switches != current.switches) {
-    print(">>>>> switches changed from " + old.switches + " to " + current.switches);
-  }
+  //if (old.level_number != current.level_number) print(">>>>> level changed from " + old.level_number + " to " + current.level_number);
+  //if (old.switches != current.switches) print(">>>>> switches changed from " + old.switches + " to " + current.switches);
 }
 
 exit {
@@ -40,26 +36,20 @@ exit {
 }
 
 start {
-  if (settings["iltimer"]) {
+  if (settings["iltimer"])
     if (current.level_timer < old.level_timer) {
       vars.currentLevel = current.level_number;
       return true;
     }
-  } else {
-    return (old.start_value == 3 && current.start_value == 2 && current.level_number == 0);
-  }
+  else return (old.start_value == 3 && current.start_value == 2 && current.level_number == 0);
 }
 
 split {
-  if (vars.movementSpeed == "0,3" && current.level_number == 37) {
-    return old.switches < current.switches;
-  } else {
-    return (current.level_number == old.level_number + 1 && current.level_number < 38);
-  }
+  return vars.movementSpeed == "0,3" && current.level_number == 37 ? old.switches < current.switches : current.level_number == old.level_number + 1 && current.level_number < 38;
 }
 
 reset {
   return
-    (old.level_number != 0 && current.level_number == 0) ||
-    (current.level_number == 0 && old.start_value == 2 && current.start_value == 3);
+    old.level_number != 0 && current.level_number == 0 ||
+    current.level_number == 0 && old.start_value == 2 && current.start_value == 3;
 }
