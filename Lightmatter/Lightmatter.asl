@@ -41,7 +41,7 @@ start {
       vars.currentLevel = current.level_number;
       return true;
     }
-  else return (old.start_value == 3 && current.start_value == 2 && current.level_number == 0);
+  else return old.start_value == 3 && current.start_value == 2 && current.level_number == 0;
 }
 
 split {
