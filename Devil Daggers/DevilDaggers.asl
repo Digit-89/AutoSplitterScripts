@@ -20,7 +20,8 @@ update {
 	if (old.igt == current.igt) vars.stopWatch.Start();
 	if (old.igt != current.igt) vars.stopWatch.Reset();
 	if (vars.stopWatch.ElapsedMilliseconds > 100 && timer.CurrentPhase == TimerPhase.Running) {
-		vars.timerModel.Pause();
+		if (vars.splitIndex == 55) vars.timerModel.Split();
+		else vars.timerModel.Pause();
 		vars.stopWatch.Reset();
 	}
 }
