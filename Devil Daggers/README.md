@@ -2,7 +2,7 @@
 ## Information
 An autosplitter for Devil Daggers.
 
-Starts and resets automatically. Splits when the next wave starts.ee
+Starts and resets automatically. Splits when the next wave starts.
 
 ## Instructions
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
