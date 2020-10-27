@@ -1,7 +1,7 @@
 state("Phasmophobia", "Stable") {
-	bool isTutorial             : "mono-2.0-bdwgc.dll", 0x498210, 0x1B0, 0xD0, 0x8, 0x278, 0x398, 0x10, 0x6C;
-	bool allPlayersAreConnected : "mono-2.0-bdwgc.dll", 0x498210, 0x1B0, 0xD0, 0x8, 0x278, 0x398, 0x10, 0x74;
-	bool isLoadingBackToMenu    : "mono-2.0-bdwgc.dll", 0x498210, 0x1B0, 0xD0, 0x8, 0x278, 0x398, 0x10, 0x75;
+	bool isTutorial             : "mono-2.0-bdwgc.dll", 0x4A02A8, 0xE0, 0xD0, 0x58, 0x40, 0x60, 0x10, 0x6C;
+	bool allPlayersAreConnected : "mono-2.0-bdwgc.dll", 0x4A02A8, 0xE0, 0xD0, 0x58, 0x40, 0x60, 0x10, 0x74;
+	bool isLoadingBackToMenu    : "mono-2.0-bdwgc.dll", 0x4A02A8, 0xE0, 0xD0, 0x58, 0x40, 0x60, 0x10, 0x75;
 	byte evidence1Index         : "mono-2.0-bdwgc.dll", 0x495DE8, 0x88, 0xDD0, 0x60, 0x0, 0x78, 0xD8;
 	byte evidence2Index         : "mono-2.0-bdwgc.dll", 0x495DE8, 0x88, 0xDD0, 0x60, 0x0, 0x78, 0xDC;
 	byte evidence3Index         : "mono-2.0-bdwgc.dll", 0x495DE8, 0x88, 0xDD0, 0x60, 0x0, 0x78, 0xE0;
@@ -29,6 +29,11 @@ state("Phasmophobia", "Beta") {
 startup {
 	vars.tM = new TimerModel {CurrentState = timer};
 	vars.sW = new Stopwatch();
+	vars.doOnTrue = (Func<bool, bool>) ((cond) => { if (cond) { vars.sW.Reset(); return true; } else return false; });
+
+	settings.Add("header", true, "Split when these conditions are met, reset if not:");
+		settings.Add("miss", true, "Objectives must be completed", "header");
+		settings.Add("evid", true, "Evidences and ghost type must be set", "header");
 }
 
 init {
@@ -48,8 +53,8 @@ init {
 }
 
 update {
-	vars.evid = new[] {current.evidence1Index, current.evidence2Index, current.evidence3Index, current.ghostTypeIndex}.Any(x => x == 0);
-	vars.miss = new[] {current.miss1Completed, current.miss2Completed, current.miss3Completed, current.miss4Completed}.Any(x => x == false);
+	vars.miss = new[] {current.miss1Completed, current.miss2Completed, current.miss3Completed, current.miss4Completed}.All(x => x == true);
+	vars.evid = new[] {current.evidence1Index, current.evidence2Index, current.evidence3Index, current.ghostTypeIndex}.All(x => x != 0);
 
 	if (!old.isLoadingBackToMenu && current.isLoadingBackToMenu) vars.sW.Start();
 	if (timer.CurrentPhase == TimerPhase.Ended && old.allPlayersAreConnected && !current.allPlayersAreConnected) vars.tM.Split();
@@ -60,15 +65,16 @@ start {
 }
 
 split {
-	if (vars.sW.ElapsedMilliseconds >= 2140 && !vars.evid && (current.isTutorial || !current.isTutorial && !vars.miss)) {
-		vars.sW.Reset();
-		return true;
-	}
+	if (vars.sW.ElapsedMilliseconds >= 2140)
+		if (current.isTutorial) return vars.doOnTrue(vars.evid && settings["evid"]);
+		else {
+			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.evid && vars.miss);
+			else return vars.doOnTrue(vars.evid && settings["evid"] || vars.miss && settings["miss"]);
+		}
 }
 
 reset {
-	if (vars.sW.ElapsedMilliseconds >= 2140 && vars.evid && (current.isTutorial || !current.isTutorial && vars.miss)) {
-		vars.sW.Reset();
-		return true;
-	}
+	if (vars.sW.ElapsedMilliseconds >= 2200)
+		if (current.isTutorial) return vars.doOnTrue(!vars.evid && settings["evid"]);
+		else return vars.doOnTrue(!vars.evid || !vars.miss);
 }
