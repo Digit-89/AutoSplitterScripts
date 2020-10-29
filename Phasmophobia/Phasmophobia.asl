@@ -67,7 +67,7 @@ start {
 }
 
 split {
-	if (version == "Stable" && vars.sW.ElapsedMilliseconds >= 2140 || version == "Beta" && vars.sW.ElapsedMilliseconds >= 11225)
+	if (version == "Stable" && vars.sW.ElapsedMilliseconds >= 2140 || version == "Beta" && vars.sW.ElapsedMilliseconds >= 11220)
 		if (current.isTutorial) return vars.doOnTrue(vars.evid && settings["evid"]);
 		else {
 			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.evid && vars.miss);
@@ -76,7 +76,7 @@ split {
 }
 
 reset {
-	if (version == "Stable" && vars.sW.ElapsedMilliseconds >= 2190 || version == "Beta" && vars.sW.ElapsedMilliseconds >= 11275)
+	if (version == "Stable" && vars.sW.ElapsedMilliseconds >= 2190 || version == "Beta" && vars.sW.ElapsedMilliseconds >= 11270)
 		if (current.isTutorial) return vars.doOnTrue(!vars.evid && settings["evid"]);
 		else return vars.doOnTrue(!vars.evid || !vars.miss);
 }
