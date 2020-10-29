@@ -18,12 +18,12 @@ state("Phasmophobia", "Beta") {
 	bool miss2Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x25;
 	bool miss3Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x26;
 	bool miss4Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x27;
+	bool allPlayersAreConnected : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x148, 0x8, 0xB8, 0x30, 0x68;
+	bool isLoadingBackToMenu    : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x148, 0x8, 0xB8, 0x30, 0x69;
 	byte evidence1Index         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0xD0;
 	byte evidence2Index         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0xE0;
 	byte evidence3Index         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0xF0;
 	byte ghostTypeIndex         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0x100;
-	bool allPlayersAreConnected : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x148, 0x8, 0xB8, 0x30, 0x68;
-	bool isLoadingBackToMenu    : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x148, 0x8, 0xB8, 0x30, 0x69;
 }
 
 startup {
@@ -44,11 +44,13 @@ init {
 		}
 	}
 	var MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
-	//print("MD5Hash: " + var MD5Hash.ToString());
+	print("MD5Hash: " + MD5Hash.ToString());
 
 	switch (MD5Hash.ToString()) {
 		case "70A74DE286D80165D0E02662157A59AC": version = "Stable"; break;
 		case "05359082AD1D84F4DDD6462175C79A90": version = "Beta"; break;
+
+		default: version = "Unsupported! Go tell Ero."; break;
 	}
 }
 
@@ -65,7 +67,7 @@ start {
 }
 
 split {
-	if (vars.sW.ElapsedMilliseconds >= 2140)
+	if (version == "Stable" && vars.sW.ElapsedMilliseconds >= 2140 || version == "Beta" && vars.sW.ElapsedMilliseconds >= 11225)
 		if (current.isTutorial) return vars.doOnTrue(vars.evid && settings["evid"]);
 		else {
 			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.evid && vars.miss);
@@ -74,7 +76,7 @@ split {
 }
 
 reset {
-	if (vars.sW.ElapsedMilliseconds >= 2200)
+	if (version == "Stable" && vars.sW.ElapsedMilliseconds >= 2190 || version == "Beta" && vars.sW.ElapsedMilliseconds >= 11275)
 		if (current.isTutorial) return vars.doOnTrue(!vars.evid && settings["evid"]);
 		else return vars.doOnTrue(!vars.evid || !vars.miss);
 }
