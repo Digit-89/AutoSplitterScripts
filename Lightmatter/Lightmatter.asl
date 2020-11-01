@@ -21,10 +21,7 @@ init {
 update {
 	if (vars.reader == null) return false;
 	vars.line = vars.reader.ReadLine();
-	if (vars.line != null && vars.line.StartsWith("TA_SetPlayerMovementSpeed: ")) {
-		vars.movementSpeed = vars.line.Split(' ')[1];
-		print(">>>>> movement speed changed to " + vars.movementSpeed);
-	}
+	if (vars.line != null && vars.line.StartsWith("TA_SetPlayerMovementSpeed: ")) vars.movementSpeed = vars.line.Split(' ')[1];
 }
 
 exit {
