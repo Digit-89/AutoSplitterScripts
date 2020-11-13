@@ -56,7 +56,7 @@ startup {
 			tB("inLevelSplits1.1", "frameSplits1.1", false, "Splits in Mainframe:"),
 				tB("frameSplits1.1", "1.1-6to7", false, "Enter second half of Main Frame"),
 				tB("frameSplits1.1", "1.1-7to9", false, "Enter Back Door Corridor from Main Frame"),
-				tB("frameSplits1.1", "1.1-9to10", false, "Enter Back Door level from Corridor"),
+				tB("frameSplits1.1", "1.1-9to10", false, "Enter Back Door level from Corridor")
 	};
 
 	settings.Add("v2.0", false, "Splits for version 2.0:");
