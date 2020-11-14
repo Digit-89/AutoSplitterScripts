@@ -68,10 +68,6 @@ startup {
 	foreach (var s in sB) settings.Add(s.Item2, s.Item3, s.Item4, s.Item1);
 }
 
-update {
-	if (old.room != current.room) print(old.room + "-" + current.room);
-}
-
 init {
 	switch (game.ProcessName) {
 		case "A Proof of Concept 1.1": vars.ver = "1.1"; break;
