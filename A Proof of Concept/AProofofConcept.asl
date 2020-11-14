@@ -68,6 +68,10 @@ startup {
 	foreach (var s in sB) settings.Add(s.Item2, s.Item3, s.Item4, s.Item1);
 }
 
+update {
+	if (old.room != current.room) print(old.room + "-" + current.room);
+}
+
 init {
 	switch (game.ProcessName) {
 		case "A Proof of Concept 1.1": vars.ver = "1.1"; break;
@@ -87,8 +91,9 @@ split {
 }
 
 reset {
-	switch ((string)vars.ver) {
-		case "1.1": return old.room != 0 && old.room != 4 && current.room == 0;
-		case "2.0": return old.room != 5 && old.room != 9 && current.room == 4;
-	}
+	if (old.room != current.room)
+		switch ((string)vars.ver) {
+			case "1.1": return old.room != 0 && old.room != 4 && current.room == 0;
+			case "2.0": return old.room != 5 && old.room != 9 && current.room == 4;
+		}
 }
