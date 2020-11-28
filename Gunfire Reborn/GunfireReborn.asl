@@ -57,7 +57,7 @@ split {
   string cL = current.level.ToString();
   return
     old.level != current.level && settings[oSt + "-" + oL + "to" + cSt + "-" + cL] ||
-    settings["finalSplit"] && !current.isInWar;
+    settings["finalSplit"] && current.layer == 3 && current.level == 4 && old.isInWar && !current.isInWar;
 }
 
 reset {
