@@ -54,6 +54,10 @@ init {
 update {
   if (!(current.layer == 3 && current.level == 4) && old.isInWar && !current.isInWar)
     vars.timerModel.Pause();
+
+  if (current.layer == 3 && old.level == 3 && current.level == 4)
+    foreach (var process in Process.GetProcessesByName("Gunfire Reborn"))
+      process.Kill();
 }
 
 start {
