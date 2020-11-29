@@ -10,7 +10,7 @@ startup {
   vars.timerModel = new TimerModel{CurrentState = timer};
   var stageNames = new Dictionary<int, string> {
     {1, "Longling Tomb"},
-    {2, "Anxi Deset"},
+    {2, "Anxi Desert"},
     {3, "Duo Fjord"}
   };
 
