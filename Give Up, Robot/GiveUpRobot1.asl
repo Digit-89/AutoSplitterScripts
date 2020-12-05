@@ -10,11 +10,6 @@ state("flashplayer_32_sa", "Normal Flash Player") {
 
 init {
 	vars.totalFrames = 0;
-	/*switch (modules.First().ModuleMemorySize) {
-		case 16990208: version = "Normal Flash Player"; break;
-		case 00000000: version = "Debug Flash Player"; break;
-		default: version = "Undeteced version of Flash!"; break;
-	}*/
 }
 
 start {
