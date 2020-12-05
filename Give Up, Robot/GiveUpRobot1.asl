@@ -1,42 +1,32 @@
 state("flashplayer_32_sa", "Normal Flash Player") {
-	int frameCount : 0xD1DD48, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x2D8, 0x10, 0x78, 0x64;
-	int level      : 0xD1DD48, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x2D8, 0x10, 0x78, 0x6C;
+	int totalCount   : 0xD1DD48, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x69C, 0x10, 0x18, 0x20;
+	int partialCount : 0xD1DD48, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x2D8, 0x10, 0x78, 0x64;
+	int level        : 0xD1DD48, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x2D8, 0x10, 0x78, 0x6C;
 }
 
 /*state("flashplayer_32_sa_debug", "Debug Flash Player") {
-	int frameCount :
-	int level      :
+	int totalCount   : 0xBC97C, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x69C, 0x10, 0x18, 0x20;
+	int partialCount : 0xBC97C, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x2D8, 0x10, 0x78, 0x64;
+	int level        : 0xBC97C, 0x8BC, 0x8, 0x68, 0xC, 0x8, 0x14, 0x2D8, 0x10, 0x78, 0x6C;
 }*/
 
-init {
-	vars.totalFrames = 0;
-}
-
 start {
-	return current.level == 1 && old.frameCount == 0 && current.frameCount > 0;
+	return current.level == 1 && old.partialCount == 0 && current.partialCount > 0;
 }
 
 split {
-	if (old.level != current.level && old.level % 10 == 0 && old.level != 80) {
-		if (old.level == 10) vars.totalFrames += 1;
-		else vars.totalFrames += 3;
-		return true;
-	} else return current.level == old.level + 1;
+	return
+		current.level == old.level + 1 ||
+		old.level != current.level && old.level % 10 == 0 && old.level != 80;
 }
 
 reset {
-	if (old.level != 0 && current.level == 0) {
-		vars.totalFrames = 0;
-		return true;
-	}
+	return old.level != 0 && current.level == 0;
 }
 
 gameTime {
-	if (old.frameCount > current.frameCount && old.frameCount > 10) vars.totalFrames += old.frameCount;
-	var timeConvert = (Func<double, TimeSpan>) ((value) => { return TimeSpan.FromSeconds(Math.Round(value * 100 / 60) / 100); });
-	var timeInRun = timeConvert(vars.totalFrames + Convert.ToSingle(current.frameCount));
-	var timeOnScore = timeConvert((double)vars.totalFrames);
-	return current.level == 80 ? timeOnScore : timeInRun;
+	var timeConverted = (Func<double, TimeSpan>) ((value) => { return TimeSpan.FromSeconds(Math.Round(Convert.ToSingle(value) * 100 / 60) / 100); });
+	return current.level == 80 ? timeConverted(current.totalCount) : timeConverted(current.totalCount + current.partialCount);
 }
 
 isLoading {
