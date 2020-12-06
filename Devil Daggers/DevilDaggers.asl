@@ -49,3 +49,7 @@ reset {
 gameTime {
 	return TimeSpan.FromSeconds(current.igt);
 }
+
+isLoading {
+	return true;
+}
