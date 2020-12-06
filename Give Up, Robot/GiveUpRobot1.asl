@@ -10,6 +10,16 @@ state("flashplayer_32_sa_debug", "Debug Flash Player") {
 	int level        : 0xDA07D8, 0xC, 0x818, 0x8, 0x24, 0xC8, 0x18, 0x2D8, 0x10, 0x78, 0x6C;
 }
 
+init {
+	if (timer.CurrentTimingMethod == TimingMethod.RealTime && settings["igtMessage"]) {
+		var message = MessageBox.Show(
+			"Give Up, Robot uses Game Time for its runs! You are currently comparing against Real Time.\n\nWould you like to switch?",
+			"LiveSplit | Give Up, Robot Splitter", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+		if (message == DialogResult.Yes) timer.CurrentTimingMethod = TimingMethod.GameTime;
+	}
+}
+
 start {
 	return current.level == 1 && old.partialCount == 0 && current.partialCount > 0;
 }
