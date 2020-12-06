@@ -8,6 +8,7 @@ Starts and resets automatically. Splits when the next wave starts.
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Devil Daggers"
 * above your splits, an "Activate" button will appear, which you need to click
+* set LiveSplit to compare against Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/devil_daggers](https://speedrun.com/devil_daggers)*  
