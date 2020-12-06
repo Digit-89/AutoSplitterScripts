@@ -10,6 +10,10 @@ state("flashplayer_32_sa_debug", "Debug Flash Player") {
 	int level        : 0xDA07D8, 0xC, 0x818, 0x8, 0x24, 0xC8, 0x18, 0x2D8, 0x10, 0x78, 0x6C;
 }
 
+startup {
+	settings.Add("igtMessage", true, "Ask if Game Time should be used when the game is opened");
+}
+
 init {
 	if (timer.CurrentTimingMethod == TimingMethod.RealTime && settings["igtMessage"]) {
 		var message = MessageBox.Show(
