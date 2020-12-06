@@ -8,6 +8,7 @@ Starts automatically when loading into the first stage. Splits can be chosen in 
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Gunfire Reborn"
 * above your splits, an "Activate" button will appear, which you need to click
+* set LiveSplit to compare against Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/gunfire_reborn](https://speedrun.com/gunfire_reborn)*  
