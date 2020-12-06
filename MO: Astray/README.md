@@ -7,6 +7,7 @@ Only works in Speed Mode. Automatically starts the timer. Splits can be chosen i
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "MO: Astray"
 * above your splits, an "Activate" button will appear, which you need to click
+* set LiveSplit to compare against Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/mo_astray](https://speedrun.com/mo_astray)*  
