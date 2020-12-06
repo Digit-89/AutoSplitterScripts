@@ -7,7 +7,7 @@ Starts the timer when starting a new game. Splits when entering the next level. 
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Give Up, Robot"
 * above your splits, an "Activate" button will appear, which you need to click
-* set LiveSplit to compare agains Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
+* set LiveSplit to compare against Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/gur1](https://speedrun.com/gur1)*
