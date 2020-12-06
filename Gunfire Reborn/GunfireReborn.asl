@@ -44,8 +44,7 @@ init {
 			"Gunfire Reborn uses Game Time for its runs! You are currently comparing against Real Time.\n\nWould you like to switch?",
 			"LiveSplit | Gunfire Reborn Splitter", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-		if (message == DialogResult.Yes)
-			timer.CurrentTimingMethod = TimingMethod.GameTime;
+		if (message == DialogResult.Yes) timer.CurrentTimingMethod = TimingMethod.GameTime;
 	}
 
 	timer.IsGameTimePaused = false;
