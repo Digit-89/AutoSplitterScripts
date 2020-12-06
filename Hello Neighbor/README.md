@@ -7,7 +7,7 @@ Pauses the timer during every loading screen. Starts the timer when the player e
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Hello Neighbor"
 * above your splits, an "Activate" button will appear, which you need to click
-* set your comparison to "Game Time"
+* set LiveSplit to compare against Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/helloneighbor](https://speedrun.com/helloneighbor)*  
