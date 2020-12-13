@@ -36,6 +36,7 @@ start {
 
 split {
 	if (vars.sW.ElapsedMilliseconds >= 8967)
+		if (!settings["evid"] && !settings["miss"]) return true;
 		if (current.isTutorial) return vars.doOnTrue(vars.evid && settings["evid"]);
 		else {
 			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.evid && vars.miss);
