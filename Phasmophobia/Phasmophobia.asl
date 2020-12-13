@@ -39,12 +39,18 @@ split {
 		if (current.isTutorial) return vars.doOnTrue(vars.evid && settings["evid"]);
 		else {
 			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.evid && vars.miss);
-			else return vars.doOnTrue(vars.evid && settings["evid"] || vars.miss && settings["miss"]);
+			if (settings["evid"] && !settings["miss"]) return vars.doOnTrue(vars.evid);
+			if (!settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.miss);
 		}
 }
 
 reset {
 	if (vars.sW.ElapsedMilliseconds >= 8967)
-		if (current.isTutorial) return vars.doOnTrue(!vars.evid && settings["evid"]);
-		else return vars.doOnTrue(!vars.evid || !vars.miss);
+		if (current.isTutorial) {
+			return vars.doOnTrue(!vars.evid);
+		} else {
+			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(!vars.evid || !vars.miss);
+			if (settings["evid"] && !settings["miss"]) return vars.doOnTrue(!vars.evid);
+			if (!settings["evid"] && settings["miss"]) return vars.doOnTrue(!vars.miss);
+		}
 }
