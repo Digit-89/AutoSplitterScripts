@@ -17,7 +17,7 @@ startup {
 	vars.sW = new Stopwatch();
 	vars.doOnTrue = (Func<bool, bool>) ((cond) => { if (cond) { vars.sW.Reset(); return true; } else return false; });
 
-	settings.Add("header", true, "Split when these conditions are met, reset if not:");
+	settings.Add("header", true, "Split ONLY when these conditions are met, reset if not:");
 		settings.Add("miss", true, "Objectives must be completed", "header");
 		settings.Add("evid", true, "Evidences and ghost type must be set", "header");
 }
@@ -35,7 +35,7 @@ start {
 }
 
 split {
-	if (vars.sW.ElapsedMilliseconds >= 11220)
+	if (vars.sW.ElapsedMilliseconds >= 8967)
 		if (current.isTutorial) return vars.doOnTrue(vars.evid && settings["evid"]);
 		else {
 			if (settings["evid"] && settings["miss"]) return vars.doOnTrue(vars.evid && vars.miss);
@@ -44,7 +44,7 @@ split {
 }
 
 reset {
-	if (vars.sW.ElapsedMilliseconds >= 11270)
+	if (vars.sW.ElapsedMilliseconds >= 8967)
 		if (current.isTutorial) return vars.doOnTrue(!vars.evid && settings["evid"]);
 		else return vars.doOnTrue(!vars.evid || !vars.miss);
 }
