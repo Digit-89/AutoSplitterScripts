@@ -13,7 +13,6 @@ state("Phasmophobia") {
 }
 
 startup {
-	vars.tM = new TimerModel {CurrentState = timer};
 	vars.sW = new Stopwatch();
 	vars.doOnTrue = (Func<bool, bool>) ((cond) => { if (cond) { vars.sW.Reset(); return true; } else return false; });
 
@@ -25,9 +24,10 @@ startup {
 update {
 	vars.miss = new[] {current.miss1Completed, current.miss2Completed, current.miss3Completed, current.miss4Completed}.All(x => x == true);
 	vars.evid = new[] {current.evidence1Index, current.evidence2Index, current.evidence3Index, current.ghostTypeIndex}.All(x => x != 0);
+	current.phase = timer.CurrentPhase;
 
 	if (!old.isLoadingBackToMenu && current.isLoadingBackToMenu) vars.sW.Start();
-	if (timer.CurrentPhase == TimerPhase.Ended && old.allPlayersAreConnected && !current.allPlayersAreConnected) vars.tM.Split();
+	if (old.phase != TimerPhase.NotRunning && current.phase == TimerPhase.NotRunning) vars.sW.Reset();
 }
 
 start {
