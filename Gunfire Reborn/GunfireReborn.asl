@@ -24,11 +24,11 @@
  */
 
 state("Gunfire Reborn") {
-	int halfTime : "GameAssembly.dll", 0x3EDEAC8, 0xB8, 0x30; // Game.GameUtility
-	byte level   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x1C; // WarLevelInfo
-	byte layer   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x20; // WarLevelInfo
-	//byte lvlType : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x24; // WarLevelInfo
-	bool isInWar : "GameAssembly.dll", 0x3EB0EA0, 0xB8, 0xC; // GameSceneManager
+	bool isInWar : "GameAssembly.dll", 0x3EB0EA0, 0xB8, 0xC;
+	byte level   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x1C;
+	byte layer   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x20;
+	//byte lvlType : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x24;
+	int halfTime : "GameAssembly.dll", 0x3EDEAC8, 0xB8, 0x30;
 }
 
 startup {
