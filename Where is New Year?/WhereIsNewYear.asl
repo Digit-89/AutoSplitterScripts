@@ -27,19 +27,20 @@ init {
     case "Where is 2019": vars.game = 2019;
     case "Where is 2020": vars.game = 2020;
   }
+
+  vars.screenChange = (Func(<int, int, bool>) ((old, curr) => {
+    return old.screen == old && current.screen == curr ? true : false;
+  });
 }
 
 start {
-  var screenChange = (Func(<int, int, bool>) ((old, curr) => {
-    return old.screen == old && current.screen == curr ? true : false;
-  });
 
   switch ((int)vars.game) {
-    case 2016: return screenChange(8, 20);
-    //case 2017: return screenChange(3, 4);
-    case 2018: return screenChange(2, 3);
-    case 2019: return screenChange(3, 5);
-    case 2020: return screenChange(3, 6);
+    case 2016: return vars.screenChange(8, 20);
+    //case 2017: return vars.screenChange(3, 4);
+    case 2018: return vars.screenChange(2, 3);
+    case 2019: return vars.screenChange(3, 5);
+    case 2020: return vars.screenChange(3, 6);
   }
 }
 
