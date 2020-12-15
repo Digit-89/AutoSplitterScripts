@@ -14,7 +14,7 @@
  * * 0x68 : OldLevelInfo (WarLevelInfo),
  * * 0x70 : IsHeroDie (bool),                       * Game.GameUtility : "GameAssembly.dll", 0x3EDEAC8, 0xB8
  * * 0x71 : HasBoss (bool),                         * * 0x28 : StartClientFrameCount (bool),
- * * 0x74 : BossID (int),                           * 0x2C : ServerChallengeFrame (int),
+ * * 0x74 : BossID (int),                           * * 0x2C : ServerChallengeFrame (int),
  * * 0x80 : HasBossWar (bool),                      * * 0x30 : ClientChallengeFrame (int),
  * * 0x84 : IsPause (int),                          * * 0x34 : ChallengePause (int)
  * * 0x88 : CurRound (int),
