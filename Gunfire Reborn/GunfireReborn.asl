@@ -2,21 +2,21 @@
 
 /*
  * WarCache : "GameAssembly.dll", 0x3EC1128, 0xB8   * GameSceneManager : "GameAssembly.dll", 0x3EB0EA0, 0xB8
- * * 0x60 : LevelInfo (WarLevelInfo),                 * * 0x4  : curSceneID (int),
- *   * 0x10 : LevelID (int),                          * * 0x8  : curMapID (int),
- *   * 0x18 : MaxLevelCnt (int),                      * * 0xC  : isInWar (bool),
- *   * 0x1C : CurLevel (int),                         * * 0x10 : loadingSceneName (String),
- *   * 0x20 : CurLayer (int),                         *   * 0x14 : Value (string)
- *   * 0x24 : LevelType (int),                        *
- *   * 0x28 : GameType (int),                         * * 0x18 : nextSceneName (String),
- *   * 0x34 : MaxRoom (int)                           * * 0x20 : nowSceneName (String),
- *                                                    * * 0x50 : IsLoading (bool)
+ * * 0x60 : LevelInfo (WarLevelInfo),               * * 0x4  : curSceneID (int),
+ *   * 0x10 : LevelID (int),                        * * 0x8  : curMapID (int),
+ *   * 0x18 : MaxLevelCnt (int),                    * * 0xC  : isInWar (bool),
+ *   * 0x1C : CurLevel (int),                       * * 0x10 : loadingSceneName (String),
+ *   * 0x20 : CurLayer (int),                       *   * 0x14 : Value (string)
+ *   * 0x24 : LevelType (int),                      *
+ *   * 0x28 : GameType (int),                       * * 0x18 : nextSceneName (String),
+ *   * 0x34 : MaxRoom (int)                         * * 0x20 : nowSceneName (String),
+ *                                                  * * 0x50 : IsLoading (bool)
  * * 0x68 : OldLevelInfo (WarLevelInfo),
- * * 0x70 : IsHeroDie (bool),                         * Game.GameUtility : "GameAssembly.dll", 0x3EDEAC8, 0xB8
- * * 0x71 : HasBoss (bool),                           * * 0x28 : StartClientFrameCount (bool),
- * * 0x74 : BossID (int),                             * * 0x2C : ServerChallengeFrame (int),
- * * 0x80 : HasBossWar (bool),                        * * 0x30 : ClientChallengeFrame (int),
- * * 0x84 : IsPause (int),                            * * 0x34 : ChallengePause (int)
+ * * 0x70 : IsHeroDie (bool),                       * Game.GameUtility : "GameAssembly.dll", 0x3EDEAC8, 0xB8
+ * * 0x71 : HasBoss (bool),                         * * 0x28 : StartClientFrameCount (bool),
+ * * 0x74 : BossID (int),                           * 0x2C : ServerChallengeFrame (int),
+ * * 0x80 : HasBossWar (bool),                      * * 0x30 : ClientChallengeFrame (int),
+ * * 0x84 : IsPause (int),                          * * 0x34 : ChallengePause (int)
  * * 0x88 : CurRound (int),
  * * 0x8C : LoadOK (bool),
  * * 0x90 : PlayMode (int),
