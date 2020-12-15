@@ -1,3 +1,28 @@
+// By Ero & Pimmalage.
+
+/*
+ * WarCache : "GameAssembly.dll", 0x3EC1128, 0xB8,
+ * * 0x60 : LevelInfo (WarLevelInfo),
+ *   * 0x10 : LevelID (int),
+ *   * 0x18 : MaxLevelCnt (int),
+ *   * 0x1C : CurLevel (int),
+ *   * 0x20 : CurLayer (int),
+ *   * 0x24 : LevelType (int),
+ *   * 0x28 : GameType (int),
+ *   * 0x34 : MaxRoom (int)
+ *
+ * * 0x68 : OldLevelInfo (WarLevelInfo),
+ * * 0x70 : IsHeroDie (bool),
+ * * 0x71 : HasBoss (bool),
+ * * 0x74 : BossID (int),
+ * * 0x80 : HasBossWar (bool),
+ * * 0x84 : IsPause (int),
+ * * 0x88 : CurRound (int),
+ * * 0x8C : LoadOK (bool),
+ * * 0x90 : PlayMode (int),
+ * * 0xA0 : TargetPointUpdated (bool)
+ */
+
 state("Gunfire Reborn") {
 	int halfTime : "GameAssembly.dll", 0x3EDEAC8, 0xB8, 0x30; // Game.GameUtility
 	byte level   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x1C; // WarLevelInfo
