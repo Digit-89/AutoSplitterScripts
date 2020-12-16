@@ -1,15 +1,28 @@
+/*
+ * LevelController : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0   * LevelValues : "GameAssembly.dll", 0x292D368, 0xB8, 0x0
+ * * 0x78 : JournalController,                                  * * 0x1A : isTutorial (bool),
+ *   * 0xD0  : evidence1Index (int),                            * * 0x24 : miss1Completed (bool),
+ *   * 0xE0  : evidence2Index (int),                            * * 0x25 : miss2Completed (bool),
+ *   * 0xF0  : evidence3Index (int),                            * * 0x26 : miss3Completed (bool),
+ *   * 0x100 : ghostTypeIndex (int)                             * * 0x27 : miss4Completed (bool)
+ *
+ * * 0x88 : GameController
+ *   * 0x68 : allPlayersAreConnected (bool),
+ *   * 0x69 : isLoadingBackToMenu (bool)
+ */
+
 state("Phasmophobia") {
-	bool isTutorial             : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x1A;
-	bool miss1Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x24;
-	bool miss2Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x25;
-	bool miss3Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x26;
-	bool miss4Completed         : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x80, 0x27;
-	bool allPlayersAreConnected : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x148, 0x8, 0xB8, 0x30, 0x68;
-	bool isLoadingBackToMenu    : "UnityPlayer.dll", 0x1804EE8, 0x128, 0x8, 0x148, 0x8, 0xB8, 0x30, 0x69;
-	byte evidence1Index         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0xD0;
-	byte evidence2Index         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0xE0;
-	byte evidence3Index         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0xF0;
-	byte ghostTypeIndex         : "UnityPlayer.dll", 0x17A2460, 0x8, 0x8, 0x240, 0x1C0, 0x100;
+	bool isTutorial             : "GameAssembly.dll", 0x292D368, 0xB8, 0x0, 0x1A;
+	bool miss1Completed         : "GameAssembly.dll", 0x292D368, 0xB8, 0x0, 0x24;
+	bool miss2Completed         : "GameAssembly.dll", 0x292D368, 0xB8, 0x0, 0x25;
+	bool miss3Completed         : "GameAssembly.dll", 0x292D368, 0xB8, 0x0, 0x26;
+	bool miss4Completed         : "GameAssembly.dll", 0x292D368, 0xB8, 0x0, 0x27;
+	byte evidence1Index         : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0, 0x78, 0xD0;
+	byte evidence2Index         : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0, 0x78, 0xE0;
+	byte evidence3Index         : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0, 0x78, 0xF0;
+	byte ghostTypeIndex         : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0, 0x78, 0x100;
+	bool allPlayersAreConnected : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0, 0x88, 0x68;
+	bool isLoadingBackToMenu    : "GameAssembly.dll", 0x292EA48, 0xB8, 0x0, 0x88, 0x69;
 }
 
 startup {
