@@ -13,9 +13,8 @@ start {
 split {
 	bool inFinalRoom = current.levelSpecificMovementMultiplier == 0.3f && current.levelIndex == 37;
 	return
-		inFinalRoom ?
-		old.totalButtonPushCount < current.totalButtonPushCount :
-		current.levelIndex == old.levelIndex + 1 && current.levelIndex < 38;
+		inFinalRoom ? old.totalButtonPushCount < current.totalButtonPushCount :
+		              current.levelIndex == old.levelIndex + 1 && current.levelIndex < 38;
 }
 
 reset {
