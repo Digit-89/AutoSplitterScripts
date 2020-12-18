@@ -1,5 +1,3 @@
-// Contact Ero if there is need for a Cheat Table containing dozens of useful variables.
-
 state("LightmatterSub") {
 	byte startValue                       : "fmodstudio.dll", 0x2B3CF0, 0x110, 0x10, 0x0, 0x28;
 	byte levelIndex                       : "mono-2.0-bdwgc.dll", 0x490A68, 0x50, 0x140, 0x58, 0xA0;
