@@ -48,59 +48,59 @@
  */
 
 state("DonutCounty") {
-  string50 sceneName       : "mono.dll", 0x298AE8, 0x20, 0x400, 0xB8, 0x20, 0x14;
-  bool loading             : "mono.dll", 0x298AE8, 0x20, 0x400, 0xB8, 0x30;
-  bool isLoadingScene      : "mono.dll", 0x298AE8, 0x20, 0x400, 0xB8, 0x32;
-  int levelIndex           : "mono.dll", 0x298AE8, 0x20, 0x400, 0xD8, 0x18, 0x8C;
-  int tornadoDestructables : "mono.dll", 0x298AE8, 0x20, 0x400, 0xF0, 0xD0;
+	string50 sceneName       : "mono.dll", 0x298AE8, 0x20, 0x400, 0xB8, 0x20, 0x14;
+	bool loading             : "mono.dll", 0x298AE8, 0x20, 0x400, 0xB8, 0x30;
+	bool isLoadingScene      : "mono.dll", 0x298AE8, 0x20, 0x400, 0xB8, 0x32;
+	int levelIndex           : "mono.dll", 0x298AE8, 0x20, 0x400, 0xD8, 0x18, 0x8C;
+	int tornadoDestructables : "mono.dll", 0x298AE8, 0x20, 0x400, 0xF0, 0xD0;
 }
 
 startup {
-  vars.completedAreas = new HashSet<int>();
-  var tB = (Func<string, string, bool, string, Tuple<string, string, bool, string>>) ((elmt1, elmt2, elmt3, emlt4) => { return Tuple.Create(elmt1, elmt2, elmt3, emlt4); });
-  var sB = new List<Tuple<string, string, bool, string>> {
-    tB("splits", "Mira's House", true, "mira"),
-      tB("mira", "Duck on a Scooter", false, "0"),
-      tB("mira", "BK talking to Mira", true, "1"),
-    tB("splits", "Potter's Rock", true, "2"),
-    tB("splits", "Ranger Station", true, "3"),
-    tB("splits", "Riverbed", true, "4"),
-    tB("splits", "Campground", true, "5"),
-    tB("splits", "Hopper Springs", true, "6"),
-    tB("splits", "Joshua Tree", true, "7"),
-    tB("splits", "Beach Lot C", true, "8"),
-    tB("splits", "Gecko Park", true, "9"),
-    tB("splits", "Chicken Barn", true, "10"),
-    tB("splits", "Honey Nut Forest", true, "11"),
-    tB("splits", "Cat Soup", true, "12"),
-    tB("splits", "Donut Shop", true, "13"),
-    tB("splits", "Abandoned House", true, "14"),
-    tB("splits", "Raccoon Lagoon", true, "15"),
-    tB("splits", "The 405", true, "16"),
-    tB("splits", "Above Donut County", false, "17"),
-    tB("splits", "Raccoon HQ Exterior", false, "18"),
-    tB("splits", "Biology Lab", true, "20"),
-    tB("splits", "Anthropology Lab", true, "22"),
-    tB("splits", "Trash King's Office", false, "24")
-  };
+	vars.completedAreas = new HashSet<int>();
+	var tB = (Func<string, string, bool, string, Tuple<string, string, bool, string>>) ((elmt1, elmt2, elmt3, emlt4) => { return Tuple.Create(elmt1, elmt2, elmt3, emlt4); });
+	var sB = new List<Tuple<string, string, bool, string>> {
+		tB("splits", "Mira's House", true, "mira"),
+			tB("mira", "Duck on a Scooter", false, "0"),
+			tB("mira", "BK talking to Mira", true, "1"),
+		tB("splits", "Potter's Rock", true, "2"),
+		tB("splits", "Ranger Station", true, "3"),
+		tB("splits", "Riverbed", true, "4"),
+		tB("splits", "Campground", true, "5"),
+		tB("splits", "Hopper Springs", true, "6"),
+		tB("splits", "Joshua Tree", true, "7"),
+		tB("splits", "Beach Lot C", true, "8"),
+		tB("splits", "Gecko Park", true, "9"),
+		tB("splits", "Chicken Barn", true, "10"),
+		tB("splits", "Honey Nut Forest", true, "11"),
+		tB("splits", "Cat Soup", true, "12"),
+		tB("splits", "Donut Shop", true, "13"),
+		tB("splits", "Abandoned House", true, "14"),
+		tB("splits", "Raccoon Lagoon", true, "15"),
+		tB("splits", "The 405", true, "16"),
+		tB("splits", "Above Donut County", false, "17"),
+		tB("splits", "Raccoon HQ Exterior", false, "18"),
+		tB("splits", "Biology Lab", true, "20"),
+		tB("splits", "Anthropology Lab", true, "22"),
+		tB("splits", "Trash King's Office", false, "24")
+	};
 
-  settings.Add("splits", true, "Split after completing levels:");
+	settings.Add("splits", true, "Split after completing levels:");
 
-  foreach (var s in sB) settings.Add(s.Item4, s.Item3, s.Item2, s.Item1);
+	foreach (var s in sB) settings.Add(s.Item4, s.Item3, s.Item2, s.Item1);
 }
 
 start {
-  if (old.sceneName != current.sceneName && old.sceneName == "titlescreen" && current.sceneName != "scn_credits") {
-    vars.completedAreas.Clear();
-    return true;
-  }
+	if (old.sceneName != current.sceneName && old.sceneName == "titlescreen" && current.sceneName != "scn_credits") {
+		vars.completedAreas.Clear();
+		return true;
+	}
 }
 
 split {
-  if (old.levelIndex != current.levelIndex && !vars.completedAreas.Contains(old.levelIndex)) {
-    vars.completedAreas.Add(old.levelIndex);
-    return settings[old.levelIndex.ToString()];
-  }
+	if (old.levelIndex != current.levelIndex && !vars.completedAreas.Contains(old.levelIndex)) {
+		vars.completedAreas.Add(old.levelIndex);
+		return settings[old.levelIndex.ToString()];
+	}
 
 	return old.tornadoDestructables == 3 && current.tornadoDestructables == 4;
 }
@@ -110,5 +110,5 @@ reset {
 }
 
 isLoading {
-  return current.loading || current.isLoadingScene;
+	return current.loading || current.isLoadingScene;
 }
