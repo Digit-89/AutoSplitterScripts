@@ -60,7 +60,7 @@ startup {
 	var tB = (Func<string, string, bool, string, Tuple<string, string, bool, string>>) ((elmt1, elmt2, elmt3, emlt4) => { return Tuple.Create(elmt1, elmt2, elmt3, emlt4); });
 	var sB = new List<Tuple<string, string, bool, string>> {
 		tB("splits", "Mira's House", true, "mira"),
-			tB("mira", "Duck on a Scooter", false, "0"),
+			tB("mira", "Goose on a Scooter", false, "0"),
 			tB("mira", "BK talking to Mira", true, "1"),
 		tB("splits", "Potter's Rock", true, "2"),
 		tB("splits", "Ranger Station", true, "3"),
