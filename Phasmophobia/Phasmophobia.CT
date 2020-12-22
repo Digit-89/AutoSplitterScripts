@@ -2,28 +2,29 @@
 <CheatTable CheatEngineTableVersion="34">
   <CheatEntries>
     <CheatEntry>
-      <ID>4</ID>
+      <ID>37</ID>
       <Description>"LevelValues"</Description>
-      <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState Value="16" RealAddress="285B919AEC0"/>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="000001557103D3C0" RealAddress="15571093C90"/>
+      <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>"GameAssembly.dll"+292D368</Address>
+      <VariableType>8 Bytes</VariableType>
+      <Address>"GameAssembly.dll"+29F1000</Address>
       <Offsets>
         <Offset>0</Offset>
         <Offset>B8</Offset>
       </Offsets>
       <CheatEntries>
         <CheatEntry>
-          <ID>5</ID>
+          <ID>38</ID>
           <Description>"isTutorial"</Description>
-          <LastState Value="1" RealAddress="285B91D392A"/>
+          <LastState Value="1" RealAddress="1557103D3DA"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>1</BitLength>
           <ShowAsBinary>0</ShowAsBinary>
-          <Address>"GameAssembly.dll"+292D368</Address>
+          <Address>"GameAssembly.dll"+29F1000</Address>
           <Offsets>
             <Offset>1A</Offset>
             <Offset>0</Offset>
@@ -31,15 +32,15 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>15</ID>
+          <ID>39</ID>
           <Description>"miss1Completed"</Description>
-          <LastState Value="0" RealAddress="285B91D3934"/>
+          <LastState Value="0" RealAddress="1557103D3E4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>1</BitLength>
           <ShowAsBinary>0</ShowAsBinary>
-          <Address>"GameAssembly.dll"+292D368</Address>
+          <Address>"GameAssembly.dll"+29F1000</Address>
           <Offsets>
             <Offset>24</Offset>
             <Offset>0</Offset>
@@ -47,15 +48,15 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>16</ID>
+          <ID>40</ID>
           <Description>"miss2Completed"</Description>
-          <LastState Value="0" RealAddress="285B91D3935"/>
+          <LastState Value="0" RealAddress="1557103D3E5"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>1</BitLength>
           <ShowAsBinary>0</ShowAsBinary>
-          <Address>"GameAssembly.dll"+292D368</Address>
+          <Address>"GameAssembly.dll"+29F1000</Address>
           <Offsets>
             <Offset>25</Offset>
             <Offset>0</Offset>
@@ -63,15 +64,15 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>17</ID>
+          <ID>41</ID>
           <Description>"miss3Completed"</Description>
-          <LastState Value="0" RealAddress="285B91D3936"/>
+          <LastState Value="0" RealAddress="1557103D3E6"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>1</BitLength>
           <ShowAsBinary>0</ShowAsBinary>
-          <Address>"GameAssembly.dll"+292D368</Address>
+          <Address>"GameAssembly.dll"+29F1000</Address>
           <Offsets>
             <Offset>26</Offset>
             <Offset>0</Offset>
@@ -79,15 +80,15 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>18</ID>
+          <ID>42</ID>
           <Description>"miss4Completed"</Description>
-          <LastState Value="0" RealAddress="285B91D3937"/>
+          <LastState Value="0" RealAddress="1557103D3E7"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>1</BitLength>
           <ShowAsBinary>0</ShowAsBinary>
-          <Address>"GameAssembly.dll"+292D368</Address>
+          <Address>"GameAssembly.dll"+29F1000</Address>
           <Offsets>
             <Offset>27</Offset>
             <Offset>0</Offset>
@@ -97,26 +98,28 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>1</ID>
+      <ID>26</ID>
       <Description>"LevelController"</Description>
-      <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState Value="160" RealAddress="285B919AED0"/>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="0000015570E98120" RealAddress="15571093CA0"/>
+      <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>"GameAssembly.dll"+292EA48</Address>
+      <VariableType>8 Bytes</VariableType>
+      <Address>"GameAssembly.dll"+29F26D8</Address>
       <Offsets>
         <Offset>0</Offset>
         <Offset>B8</Offset>
       </Offsets>
       <CheatEntries>
         <CheatEntry>
-          <ID>10</ID>
+          <ID>28</ID>
           <Description>"JournalController"</Description>
-          <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="224" RealAddress="285B8FF5618"/>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="000001585E9A1DD0" RealAddress="15570E98198"/>
+          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>"GameAssembly.dll"+292EA48</Address>
+          <VariableType>8 Bytes</VariableType>
+          <Address>"GameAssembly.dll"+29F26D8</Address>
           <Offsets>
             <Offset>78</Offset>
             <Offset>0</Offset>
@@ -124,12 +127,12 @@
           </Offsets>
           <CheatEntries>
             <CheatEntry>
-              <ID>11</ID>
+              <ID>29</ID>
               <Description>"evidence1Index"</Description>
-              <LastState Value="3" RealAddress="28618A74FB0"/>
+              <LastState Value="6" RealAddress="1585E9A1EA0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>"GameAssembly.dll"+292EA48</Address>
+              <Address>"GameAssembly.dll"+29F26D8</Address>
               <Offsets>
                 <Offset>D0</Offset>
                 <Offset>78</Offset>
@@ -138,12 +141,12 @@
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>12</ID>
+              <ID>30</ID>
               <Description>"evidence2Index"</Description>
-              <LastState Value="2" RealAddress="28618A74FC0"/>
+              <LastState Value="0" RealAddress="1585E9A1EB0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>"GameAssembly.dll"+292EA48</Address>
+              <Address>"GameAssembly.dll"+29F26D8</Address>
               <Offsets>
                 <Offset>E0</Offset>
                 <Offset>78</Offset>
@@ -152,12 +155,12 @@
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>13</ID>
+              <ID>31</ID>
               <Description>"evidence3Index"</Description>
-              <LastState Value="1" RealAddress="28618A74FD0"/>
+              <LastState Value="0" RealAddress="1585E9A1EC0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>"GameAssembly.dll"+292EA48</Address>
+              <Address>"GameAssembly.dll"+29F26D8</Address>
               <Offsets>
                 <Offset>F0</Offset>
                 <Offset>78</Offset>
@@ -166,12 +169,12 @@
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>14</ID>
+              <ID>32</ID>
               <Description>"ghostTypeIndex"</Description>
-              <LastState Value="0" RealAddress="28618A74FE0"/>
+              <LastState Value="0" RealAddress="1585E9A1ED0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>"GameAssembly.dll"+292EA48</Address>
+              <Address>"GameAssembly.dll"+29F26D8</Address>
               <Offsets>
                 <Offset>100</Offset>
                 <Offset>78</Offset>
@@ -182,13 +185,14 @@
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>7</ID>
+          <ID>33</ID>
           <Description>"GameController"</Description>
-          <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="16" RealAddress="285B8FF5628"/>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="000001585EAB9360" RealAddress="15570E981A8"/>
+          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>"GameAssembly.dll"+292EA48</Address>
+          <VariableType>8 Bytes</VariableType>
+          <Address>"GameAssembly.dll"+29F26D8</Address>
           <Offsets>
             <Offset>88</Offset>
             <Offset>0</Offset>
@@ -196,15 +200,15 @@
           </Offsets>
           <CheatEntries>
             <CheatEntry>
-              <ID>8</ID>
+              <ID>34</ID>
               <Description>"allPlayersAreConnected"</Description>
-              <LastState Value="1" RealAddress="286189CDE78"/>
+              <LastState Value="1" RealAddress="1585EAB93C8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Binary</VariableType>
               <BitStart>0</BitStart>
               <BitLength>1</BitLength>
               <ShowAsBinary>0</ShowAsBinary>
-              <Address>"GameAssembly.dll"+292EA48</Address>
+              <Address>"GameAssembly.dll"+29F26D8</Address>
               <Offsets>
                 <Offset>68</Offset>
                 <Offset>88</Offset>
@@ -213,15 +217,15 @@
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>9</ID>
+              <ID>35</ID>
               <Description>"isLoadingBackToMenu"</Description>
-              <LastState Value="0" RealAddress="286189CDE79"/>
+              <LastState Value="0" RealAddress="1585EAB93C9"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Binary</VariableType>
               <BitStart>0</BitStart>
               <BitLength>1</BitLength>
               <ShowAsBinary>0</ShowAsBinary>
-              <Address>"GameAssembly.dll"+292EA48</Address>
+              <Address>"GameAssembly.dll"+29F26D8</Address>
               <Offsets>
                 <Offset>69</Offset>
                 <Offset>88</Offset>
@@ -386,8 +390,8 @@
     </Structure>
     <Structure Name="LevelController.Static" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
       <Elements>
-        <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
         <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="OffsetOfInstanceIDInCPlusPlusObject" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
       </Elements>
     </Structure>
     <Structure Name="LevelValues" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
@@ -403,8 +407,14 @@
     </Structure>
     <Structure Name="LevelValues.Static" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
       <Elements>
-        <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
         <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="OffsetOfInstanceIDInCPlusPlusObject" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="String" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000010" Description="Length" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="20" Vartype="Unicode String" Bytesize="128" OffsetHex="00000014" Description="Value" DisplayMethod="Unsigned Integer"/>
       </Elements>
     </Structure>
   </Structures>
