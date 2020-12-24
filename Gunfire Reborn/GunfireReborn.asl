@@ -1,7 +1,7 @@
 // By Ero & Pimmalage.
 
 /*
- * WarCache : "GameAssembly.dll", 0x3EC1128, 0xB8   * GameSceneManager : "GameAssembly.dll", 0x3EB0EA0, 0xB8
+ * WarCache : "GameAssembly.dll", 0x405ABE8, 0xB8   * GameSceneManager : "GameAssembly.dll", 0x4049F88, 0xB8
  * * 0x60 : LevelInfo (WarLevelInfo),               * * 0x4  : curSceneID (int),
  *   * 0x10 : LevelID (int),                        * * 0x8  : curMapID (int),
  *   * 0x18 : MaxLevelCnt (int),                    * * 0xC  : isInWar (bool),
@@ -12,7 +12,7 @@
  *   * 0x34 : MaxRoom (int)                         * * 0x20 : nowSceneName,
  *                                                  * * 0x50 : IsLoading (bool)
  * * 0x68 : OldLevelInfo (WarLevelInfo),
- * * 0x70 : IsHeroDie (bool),                       * Game.GameUtility : "GameAssembly.dll", 0x3EDEAC8, 0xB8
+ * * 0x70 : IsHeroDie (bool),                       * Game.GameUtility : "GameAssembly.dll", 0x4079CE0, 0xB8
  * * 0x71 : HasBoss (bool),                         * * 0x28 : StartClientFrameCount (bool),
  * * 0x74 : BossID (int),                           * * 0x2C : ServerChallengeFrame (int),
  * * 0x80 : HasBossWar (bool),                      * * 0x30 : ClientChallengeFrame (int),
@@ -24,11 +24,11 @@
  */
 
 state("Gunfire Reborn") {
-	bool isInWar : "GameAssembly.dll", 0x3EB0EA0, 0xB8, 0xC;
-	byte level   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x1C;
-	byte layer   : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x20;
-	//byte lvlType : "GameAssembly.dll", 0x3EC1128, 0xB8, 0x60, 0x24;
-	int halfTime : "GameAssembly.dll", 0x3EDEAC8, 0xB8, 0x30;
+	bool isInWar : "GameAssembly.dll", 0x4049F88, 0xB8, 0xC;
+	byte level   : "GameAssembly.dll", 0x405ABE8, 0xB8, 0x60, 0x1C;
+	byte layer   : "GameAssembly.dll", 0x405ABE8, 0xB8, 0x60, 0x20;
+	//byte lvlType : "GameAssembly.dll", 0x405ABE8, 0xB8, 0x60, 0x24;
+	int halfTime : "GameAssembly.dll", 0x4079CE0, 0xB8, 0x30;
 }
 
 startup {
