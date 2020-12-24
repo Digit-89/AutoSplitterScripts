@@ -15,7 +15,7 @@ startup {
 	vars.parts = new Dictionary<string, Tuple<float, float, float, float>> {
 		{"Mona Lisa", tB(2300f, 2450f, -310f, -300f)},
 		{"American Gothic", tB(3300f, 3450f, -220f, -210f)},
-		{"Self-Portrait with Thorn Neck­lace and Humming­bird", tB(4300f, 4450f, 1770f, 1780f)},
+		{"Self-Portrait with Thorn Necklace and Hummingbird", tB(4300f, 4450f, 1770f, 1780f)},
 		{"Girl before a Mirror", tB(2210f, 2220f, 2300f, 2450f)},
 		{"Room with 2 Portraits", tB(-3280f, -3270f, 50f, 200f)},
 		{"Room with 3 Portraits", tB(-6270f, -6260f, 534f, 716f)},
@@ -45,7 +45,7 @@ update {
 		return current.xPos >= xMin && current.xPos <= xMax && current.yPos >= yMin && current.yPos <= yMax ? true : false;
 	});
 
-	vars.ending = vars.inPos(-910, -880, -885, -875) && current.mov == null;
+	vars.ending = vars.inPos(-1000, -880, -885, -875) && current.mov == null;
 }
 
 start {
