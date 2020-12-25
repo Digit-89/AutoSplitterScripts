@@ -105,10 +105,6 @@ split {
 	return old.tornadoDestructables == 3 && current.tornadoDestructables == 4;
 }
 
-reset {
-	return old.sceneName != current.sceneName && current.sceneName == "titlescreen";
-}
-
 isLoading {
 	return current.loading || current.isLoadingScene;
 }
