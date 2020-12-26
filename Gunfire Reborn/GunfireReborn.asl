@@ -64,6 +64,19 @@ startup {
 }
 
 init {
+	// MD5 code by CptBrian.
+	string MD5Hash;
+	using (var md5 = System.Security.Cryptography.MD5.Create())
+		using (var s = File.Open(modules.First().FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+			MD5Hash = md5.ComputeHash(s).Select(x => x.ToString("X")).Aggregate((a, b) => a + b);
+	print("\nMD5Hash: " + MD5Hash + "\n");
+	
+	/*switch(MD5Hash) {
+		case "D7C5A3D642348A1C4661C69B51971D"  : version = "1.4.1c"; break;
+		case "A82CBDAD4AA16341D436FF8F24788DC7": version = "1.4.2"; break;
+		default: version = "Undetected!"; break;
+	}*/
+
 	if (timer.CurrentTimingMethod == TimingMethod.RealTime && settings["igtMessage"]) {
 		var message = MessageBox.Show(
 			"Gunfire Reborn uses Game Time for its runs! You are currently comparing against Real Time.\n\nWould you like to switch?",
