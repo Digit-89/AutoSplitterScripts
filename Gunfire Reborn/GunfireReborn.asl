@@ -85,12 +85,19 @@ init {
 	using (var md5 = System.Security.Cryptography.MD5.Create())
 		using (var s = File.Open(modules.First().FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
 			MD5Hash = md5.ComputeHash(s).Select(x => x.ToString("X")).Aggregate((a, b) => a + b);
-	//print("\nMD5Hash: " + MD5Hash + "\n");
+	//print("\nMD5 Hash: " + MD5Hash + "\n");
 
 	switch(MD5Hash) {
 		case "2F269F83B8DFF21B1D4B2533D9B420" : version = "Dec 06, 2020"; break;
 		case "DA701978A6C2D9FC92DD5C14DF0A59D": version = "Dec 24, 2020"; break;
-		default: version = "Undetected!"; break;
+		default:
+			version = "Undetected!";
+			var message = MessageBox.Show(
+				"This version of Gunfire Reborn is not supported by the auto splitter!\n\nMD5 Hash: " + MD5Hash +
+				"\n\nClicking OK will copy the hash to your clipboard.",
+				"LiveSplit | Gunfire Reborn Splitter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			if (message == DialogResult.OK) Clipboard.SetText(MD5Hash);
+			break;
 	}
 
 	timer.IsGameTimePaused = false;
