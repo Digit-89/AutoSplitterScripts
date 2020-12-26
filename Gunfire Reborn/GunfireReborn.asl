@@ -71,7 +71,8 @@ startup {
 	settings.Add("igtMessage", true, "Ask if Game Time should be used when the game is opened");
 }
 
-init {if (timer.CurrentTimingMethod == TimingMethod.RealTime && settings["igtMessage"]) {
+init {
+	if (timer.CurrentTimingMethod == TimingMethod.RealTime && settings["igtMessage"]) {
 		var message = MessageBox.Show(
 			"Gunfire Reborn uses Game Time for its runs! You are currently comparing against Real Time.\n\nWould you like to switch?",
 			"LiveSplit | Gunfire Reborn Splitter", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
