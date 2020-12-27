@@ -117,6 +117,7 @@ split {
 	string cSt = current.layer.ToString();
 	string oL = old.level.ToString();
 	string cL = current.level.ToString();
+
 	return
 		old.level != current.level && settings[oSt + "-" + oL + "to" + cSt + "-" + cL] ||
 		settings["finalSplit"] && current.layer == 3 && current.level == 4 && old.isInWar && !current.isInWar && old.halfTime == current.halfTime;
@@ -127,7 +128,8 @@ reset {
 }
 
 gameTime {
-	return TimeSpan.FromMilliseconds(current.halfTime * 20);
+	if (timer.CurrentPhase == TimerPhase.Running)
+		return TimeSpan.FromMilliseconds(current.halfTime * 20);
 }
 
 isLoading {
