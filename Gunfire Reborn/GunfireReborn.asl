@@ -117,8 +117,6 @@ update {
 	current.isInWar = vars.memWatchers["inWar"].Current;
 	current.halfTime = vars.memWatchers["time"].Current;
 
-	//print(current.halfTime.ToString());
-
 	if (!(current.layer == 3 && current.level == 4) && old.isInWar && !current.isInWar)
 		vars.timerModel.Pause();
 }
