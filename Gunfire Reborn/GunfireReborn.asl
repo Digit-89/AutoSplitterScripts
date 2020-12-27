@@ -1,29 +1,43 @@
 // Help by Pimmalage.
 
 /*
- * WarCache :                              * GameSceneManager :
- * * 0x60 : LevelInfo (WarLevelInfo),      * * 0x4  : curSceneID (int),
- *   * 0x10 : LevelID (int),               * * 0x8  : curMapID (int),
- *   * 0x18 : MaxLevelCnt (int),           * * 0xC  : isInWar (bool),
- *   * 0x1C : CurLevel (int),              * * 0x10 : loadingSceneName,
- *   * 0x20 : CurLayer (int),              *   * 0x14 : Value (string)
- *   * 0x24 : LevelType (int),             *
- *   * 0x28 : GameType (int),              * * 0x18 : nextSceneName,
- *   * 0x34 : MaxRoom (int)                * * 0x20 : nowSceneName,
- *                                         * * 0x50 : IsLoading (bool)
+ * WarCache : "GameAssembly.dll", 0x40775E8, 0xB8   * GameSceneManager : "GameAssembly.dll", 0x4066968, 0xB8
+ * * 0x60 : LevelInfo (WarLevelInfo),               * * 0x4  : curSceneID (int),
+ *   * 0x10 : LevelID (int),                        * * 0x8  : curMapID (int),
+ *   * 0x18 : MaxLevelCnt (int),                    * * 0xC  : isInWar (bool),
+ *   * 0x1C : CurLevel (int),                       * * 0x10 : loadingSceneName,
+ *   * 0x20 : CurLayer (int),                       *   * 0x14 : Value (string)
+ *   * 0x24 : LevelType (int),                      *
+ *   * 0x28 : GameType (int),                       * * 0x18 : nextSceneName,
+ *   * 0x34 : MaxRoom (int)                         * * 0x20 : nowSceneName,
+ *                                                  * * 0x50 : IsLoading (bool)
  * * 0x68 : OldLevelInfo (WarLevelInfo),
- * * 0x70 : IsHeroDie (bool),              * Game.GameUtility :
- * * 0x71 : HasBoss (bool),                * * 0x28 : StartClientFrameCount (bool),
- * * 0x74 : BossID (int),                  * * 0x2C : ServerChallengeFrame (int),
- * * 0x80 : HasBossWar (bool),             * * 0x30 : ClientChallengeFrame (int),
- * * 0x84 : IsPause (int),                 * * 0x34 : ChallengePause (int)
+ * * 0x70 : IsHeroDie (bool),                       * Game.GameUtility : "GameAssembly.dll", 0x40966A0, 0xB8
+ * * 0x71 : HasBoss (bool),                         * * 0x28 : StartClientFrameCount (bool),
+ * * 0x74 : BossID (int),                           * * 0x2C : ServerChallengeFrame (int),
+ * * 0x80 : HasBossWar (bool),                      * * 0x30 : ClientChallengeFrame (int),
+ * * 0x84 : IsPause (int),                          * * 0x34 : ChallengePause (int)
  * * 0x88 : CurRound (int),
  * * 0x8C : LoadOK (bool),
  * * 0x90 : PlayMode (int),
  * * 0xA0 : TargetPointUpdated (bool)
  */
 
-state("Gunfire Reborn") {}
+state("Gunfire Reborn", "Dec 06, 2020") {
+	bool isInWar : "GameAssembly.dll", 0x3EDCDE8, 0xB8, 0xC;
+	byte level   : "GameAssembly.dll", 0x3EBF4B8, 0xB8, 0x60, 0x1C;
+	byte layer   : "GameAssembly.dll", 0x3EBF4B8, 0xB8, 0x60, 0x20;
+	//byte lvlType : "GameAssembly.dll", 0x3EBF4B8, 0xB8, 0x60, 0x24;
+	int halfTime : "GameAssembly.dll", 0x3EAF220, 0xB8, 0x30;
+}
+
+state("Gunfire Reborn", "Dec 24, 2020") {
+	bool isInWar : "GameAssembly.dll", 0x4066968, 0xB8, 0xC;
+	byte level   : "GameAssembly.dll", 0x40775E8, 0xB8, 0x60, 0x1C;
+	byte layer   : "GameAssembly.dll", 0x40775E8, 0xB8, 0x60, 0x20;
+	//byte lvlType : "GameAssembly.dll", 0x40775E8, 0xB8, 0x60, 0x24;
+	int halfTime : "GameAssembly.dll", 0x40966A0, 0xB8, 0x30;
+}
 
 startup {
 	vars.timerModel = new TimerModel{CurrentState = timer};
@@ -66,62 +80,33 @@ init {
 		if (message == DialogResult.Yes) timer.CurrentTimingMethod = TimingMethod.GameTime;
 	}
 
-	// SigScan code by 2838.
-	Func<IntPtr, int, int, IntPtr> getPointerFromOpcode = (ptr, trgOperandOffset, totalSize) => {
-		byte[] bytes = memory.ReadBytes(ptr + trgOperandOffset, 4);
-		if (bytes == null) return IntPtr.Zero;
+	// MD5 code by CptBrian.
+	string MD5Hash;
+	using (var md5 = System.Security.Cryptography.MD5.Create())
+		using (var s = File.Open(modules.First().FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+			MD5Hash = md5.ComputeHash(s).Select(x => x.ToString("X")).Aggregate((a, b) => a + b);
+	//print("\nMD5 Hash: " + MD5Hash + "\n");
 
-		Array.Reverse(bytes);
-		int offset = Convert.ToInt32(BitConverter.ToString(bytes).Replace("-",""),16);
-		IntPtr actualPtr = IntPtr.Add((ptr + totalSize), offset);
-		return actualPtr;
-	};
-
-	ProcessModuleWow64Safe assembly = modules.FirstOrDefault(x => x.ModuleName.ToLower() == "gameassembly.dll");
-	var assemblyScanner = new SignatureScanner(game, assembly.BaseAddress, assembly.ModuleMemorySize);
-
-	// Additional thanks to 2838's Ghidra signature script.
-	var warCacheSig = new SigScanTarget(0, "48 8B 05 ???????? 48 8B 80 ???????? 33 C9 C6 00 01");
-	var sceneManagerSig = new SigScanTarget(0, "48 8B 0D ???????? F6 81 ???????? 02 74 ?? 83 B9 ???????? 00 75 ?? E8 ???????? 48 8B 0D ???????? 48 8B 81 ???????? 3A");
-	var gameUtilitySig = new SigScanTarget(0, "48 8B 05 ???????? F6 80 ???????? 02 74 ?? 83 B8 ???????? 00 75 ?? 48 8B C8 E8 ???????? 48 8B 05 ???????? 48 8B 80 ???????? 33 D2 89");
-	IntPtr warCachePtr = IntPtr.Zero;
-	IntPtr sceneManagerPtr = IntPtr.Zero;
-	IntPtr gameUtilityPtr = IntPtr.Zero;
-
-	bool sigsFound = false;
-	while (!sigsFound) {
-		warCachePtr = getPointerFromOpcode(assemblyScanner.Scan(warCacheSig), 3, 7);
-		sceneManagerPtr = getPointerFromOpcode(assemblyScanner.Scan(sceneManagerSig), 3, 7);
-		gameUtilityPtr = getPointerFromOpcode(assemblyScanner.Scan(gameUtilitySig), 3, 7);
-		sigsFound = new[]{warCachePtr, sceneManagerPtr, gameUtilityPtr}.All(x => x != IntPtr.Zero);
+	switch(MD5Hash) {
+		case "2F269F83B8DFF21B1D4B2533D9B420" : version = "Dec 06, 2020"; break;
+		case "DA701978A6C2D9FC92DD5C14DF0A59D": version = "Dec 24, 2020"; break;
+		default:
+			version = "Undetected!";
+			var message = MessageBox.Show(
+				"This version of Gunfire Reborn is not supported by the auto splitter!\n\nMD5 Hash: " + MD5Hash +
+				"\n\nClicking OK will copy the hash to your clipboard.",
+				"LiveSplit | Gunfire Reborn Splitter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			if (message == DialogResult.OK) Clipboard.SetText(MD5Hash);
+			break;
 	}
-
-	print("Found WarCache: 0x" + warCachePtr.ToString("X"));
-	print("Found GameSceneManager: 0x" + sceneManagerPtr.ToString("X"));
-	print("Found Game.GameUtility: 0x" + gameUtilityPtr.ToString("X"));
-
-	vars.memWatchers = new MemoryWatcherList {
-		new MemoryWatcher<byte>(new DeepPointer(warCachePtr, 0xB8, 0x60, 0x1C)) {Name = "level"},
-		new MemoryWatcher<byte>(new DeepPointer(warCachePtr, 0xB8, 0x60, 0x20)) {Name = "layer"},
-		new MemoryWatcher<bool>(new DeepPointer(sceneManagerPtr, 0xB8, 0xC)) {Name = "inWar"},
-		new MemoryWatcher<int>(new DeepPointer(gameUtilityPtr, 0xB8, 0x30)) {Name = "time"}
-	};
 
 	timer.IsGameTimePaused = false;
 }
 
 update {
-	vars.memWatchers.UpdateAll(game);
-	current.level = vars.memWatchers["level"].Current;
-	current.layer = vars.memWatchers["layer"].Current;
-	current.isInWar = vars.memWatchers["inWar"].Current;
-	current.halfTime = vars.memWatchers["time"].Current;
-
 	if (!(current.layer == 3 && current.level == 4) && old.isInWar && !current.isInWar)
 		vars.timerModel.Pause();
 }
-
-
 
 start {
 	return current.layer == 1 && current.level == 1 && old.halfTime == 0 && current.halfTime > 0;
@@ -132,7 +117,6 @@ split {
 	string cSt = current.layer.ToString();
 	string oL = old.level.ToString();
 	string cL = current.level.ToString();
-
 	return
 		old.level != current.level && settings[oSt + "-" + oL + "to" + cSt + "-" + cL] ||
 		settings["finalSplit"] && current.layer == 3 && current.level == 4 && old.isInWar && !current.isInWar && old.halfTime == current.halfTime;
@@ -143,8 +127,7 @@ reset {
 }
 
 gameTime {
-	if (timer.CurrentPhase == TimerPhase.Running)
-		return TimeSpan.FromMilliseconds(current.halfTime * 20);
+	return TimeSpan.FromMilliseconds(current.halfTime * 20);
 }
 
 isLoading {
