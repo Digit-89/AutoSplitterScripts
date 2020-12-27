@@ -143,7 +143,8 @@ reset {
 }
 
 gameTime {
-	return TimeSpan.FromMilliseconds(current.halfTime * 20);
+	if (timer.CurrentPhase == TimerPhase.Running)
+		return TimeSpan.FromMilliseconds(current.halfTime * 20);
 }
 
 isLoading {
