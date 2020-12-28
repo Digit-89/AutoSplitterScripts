@@ -27,7 +27,6 @@ state("Gunfire Reborn", "Dec 06, 2020") {
 	bool isInWar : "GameAssembly.dll", 0x3EDCDE8, 0xB8, 0xC;
 	byte level   : "GameAssembly.dll", 0x3EBF4B8, 0xB8, 0x60, 0x1C;
 	byte layer   : "GameAssembly.dll", 0x3EBF4B8, 0xB8, 0x60, 0x20;
-	//byte lvlType : "GameAssembly.dll", 0x3EBF4B8, 0xB8, 0x60, 0x24;
 	int halfTime : "GameAssembly.dll", 0x3EAF220, 0xB8, 0x30;
 }
 
@@ -35,7 +34,6 @@ state("Gunfire Reborn", "Dec 24, 2020") {
 	bool isInWar : "GameAssembly.dll", 0x4066968, 0xB8, 0xC;
 	byte level   : "GameAssembly.dll", 0x40775E8, 0xB8, 0x60, 0x1C;
 	byte layer   : "GameAssembly.dll", 0x40775E8, 0xB8, 0x60, 0x20;
-	//byte lvlType : "GameAssembly.dll", 0x40775E8, 0xB8, 0x60, 0x24;
 	int halfTime : "GameAssembly.dll", 0x40966A0, 0xB8, 0x30;
 }
 
@@ -43,7 +41,6 @@ state("Gunfire Reborn", "Dec 28, 2020") {
 	bool isInWar : "GameAssembly.dll", 0x4044CB0, 0xB8, 0xC;
 	byte level   : "GameAssembly.dll", 0x4055930, 0xB8, 0x60, 0x1C;
 	byte layer   : "GameAssembly.dll", 0x4055930, 0xB8, 0x60, 0x20;
-	//byte lvlType : "GameAssembly.dll", 0x4055930, 0xB8, 0x60, 0x24;
 	int halfTime : "GameAssembly.dll", 0x40749E8, 0xB8, 0x30;
 }
 
@@ -96,8 +93,8 @@ init {
 	//print("\nMD5 Hash: " + MD5Hash + "\n");
 
 	switch(MD5Hash) {
-		case "2F269F83B8DFF21B1D4B2533D9B420" : version = "Dec 06, 2020"; break;
-		case "DA701978A6C2D9FC92DD5C14DF0A59D": version = "Dec 24, 2020"; break;
+		case "2F269F83B8DFF21B1D4B2533D9B420"  : version = "Dec 06, 2020"; break;
+		case "DA701978A6C2D9FC92DD5C14DF0A59D" : version = "Dec 24, 2020"; break;
 		case "6CB6FAB738ADDDE0EE971D1DBC215DD4": version = "Dec 28, 2020"; break;
 		default:
 			version = "Undetected!";
