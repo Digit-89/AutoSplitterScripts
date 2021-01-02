@@ -29,8 +29,7 @@ startup {
 	settings.Add("sectionSplits", true, "Split on entering these gallery sections:");
 	foreach (var p in vars.parts)
 		if (p.Key.StartsWith("Enter"))
-			if (p.Key.Contains("1")) settings.Add(p.Key, false, p.Key, "sectionSplits");
-			else settings.Add(p.Key, true, p.Key, "sectionSplits");
+			settings.Add(p.Key, (p.Key.Contains("1") ? false : true), p.Key, "sectionSplits");
 
 	settings.Add("paintingSplits", false, "Split after finishing these painting sections:");
 	foreach (var p in vars.parts)
