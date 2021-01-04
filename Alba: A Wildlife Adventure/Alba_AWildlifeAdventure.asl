@@ -283,6 +283,14 @@ reset {
 	return current.igt == 0.0 && old.igt > 0.0;
 }
 
+gameTime {
+	return TimeSpan.FromSeconds(current.igt);
+}
+
+isLoading {
+	return true;
+}
+
 exit {
 	vars.timerModel.Reset();
 	try { vars.popUpForm.Close(); } catch {}
