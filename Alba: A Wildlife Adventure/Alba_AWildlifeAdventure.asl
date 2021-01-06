@@ -1,54 +1,11 @@
 state("Alba") {
-	int activeStage : "UnityPlayer.dll", 0x179A108, 0xD0, 0x8, 0x1F8, 0x1F8, 0x40, 0x1C0, 0x20, 0x48;
-	float igt       : "UnityPlayer.dll", 0x179A108, 0xD0, 0x8, 0x1F8, 0x1F8, 0x40, 0x1C0, 0x20, 0x54;
+	int activeStage : "UnityPlayer.dll", 0x18053A8, 0x48, 0x178, 0x78, 0x148, 0xD0, 0x30, 0x70, 0x0, 0x48;
+	float igt       : "UnityPlayer.dll", 0x18053A8, 0x48, 0x178, 0x78, 0x148, 0xD0, 0x30, 0x70, 0x0, 0x54;
 	int goalCount   : "mono-2.0-bdwgc.dll", 0x494A90, 0xD00, 0x0, 0x250, 0x40, 0x10, 0x30, 0x18;
 }
 
 startup {
-	vars.stopWatch = new Stopwatch();
-	vars.stopWatch.Start();
-
-	vars.scrollSpeed = 0.12;
-	vars.timerModel = new TimerModel {CurrentState = timer};
-	vars.allQuests = new Dictionary<string, string>();
-
-	vars.clr = new Dictionary<string, System.Drawing.Color> {
-		{"red", System.Drawing.Color.FromArgb(204, 32, 63)},
-		{"orange", System.Drawing.Color.FromArgb(232, 136, 76)},
-		{"yellow", System.Drawing.Color.FromArgb(247, 210, 70)},
-		{"green", System.Drawing.Color.FromArgb(89, 204, 104)},
-		{"txtGray", System.Drawing.Color.FromArgb(172, 172, 172)},
-		{"bgGray", System.Drawing.Color.FromArgb(15, 15, 15)}
-	};
-
-	vars.clrPicker = (Func<float, System.Drawing.Color>) ((percentage) => {
-		return percentage == 0.0 ? vars.clr["red"] :
-		       percentage > 0.0 && percentage < 0.5 ? vars.clr["orange"] :
-		       percentage >= 0.5 && percentage < 1.0 ? vars.clr["yellow"] :
-		       vars.clr["green"];
-	});
-
-	vars.popUpForm = new Form {
-		Size = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width / 20 * 6, Screen.PrimaryScreen.Bounds.Height / 20 * 18),
-		Font = new System.Drawing.Font("Courier New", 10),
-		Icon = System.Drawing.Icon.ExtractAssociatedIcon("LiveSplit.exe"),
-		BackColor = vars.clr["bgGray"],
-		SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide,
-		AutoScroll = true
-	};
-
-	vars.openForm = (Action) (() => {
-		var manualEvent = new ManualResetEvent(true);
-		var formThread = new Thread (() => {
-			manualEvent.WaitOne();
-			vars.popUpForm.Text = "Alba: A Wildlife Adventure | Completion Tracker";
-			vars.popUpForm.ShowDialog();
-		});
-		formThread.Start();
-	});
-
-	vars.resetText = (System.Windows.Forms.FormClosedEventHandler) ((s, e) => { vars.popUpForm.Text = ""; });
-	vars.popUpForm.FormClosed += vars.resetText;
+  vars.stopWatch = new Stopwatch();
 
 	var tB = (Func<string, string, string, Tuple<string, string, string>>) ((elmt1, elmt2, elmt3) => { return Tuple.Create(elmt1, elmt2, elmt3); });
 	var questSettings = new List<Tuple<string, string, string>> {
@@ -154,18 +111,10 @@ startup {
 			tB("QG_Marina_and_Socks", "QT_Return_lost_dog_to_owner", "Return lost dog to owner")
 	};
 
-	settings.Add("helpBox", false, "Show a text box which tracks your Tasks' Progress");
-	settings.Add("scrollBox", false, "Scroll the text box automatically when the timer is running");
 	settings.Add("Main Quests");
 	settings.Add("Side Quests");
 
-	foreach (var q in questSettings) {
-		settings.Add(q.Item2, false, q.Item3, q.Item1);
-		vars.allQuests.Add(q.Item2, q.Item3);
-	}
-
-	print("Startup completed in " + vars.stopWatch.ElapsedMilliseconds.ToString() + "ms!");
-	vars.stopWatch.Reset();
+	foreach (var q in questSettings) settings.Add(q.Item2, false, q.Item3, q.Item1);
 }
 
 init {
@@ -173,99 +122,26 @@ init {
 	while (current.goalCount == 0)
 		if (vars.stopWatch.ElapsedMilliseconds >= 1000) throw new Exception("Game has not fully initialized yet!");
 
-	vars.questDisplayNames = new Dictionary<string, Label>();
-	vars.questDisplayNumbers = new Dictionary<string, Label>();
-	vars.taskMaxWatchers = new MemoryWatcherList();
-	vars.taskCompletionWatchers = new MemoryWatcherList();
-
-	var cleanString = (Func<string, string>) ((input) => {
-		return (input.EndsWith("_SQ") ? input.Remove(input.Length - 3) : input)
-		       .Substring(3).Replace('_', ' ').Trim();
-	});
-
-	int textOffset = 0;
-	var questAdd = (Action<string, int, System.Drawing.Color, float, int>) ((use, count, color, currVal, maxVal) => {
-		bool isHeader = use.StartsWith("QG");
-		var clr = isHeader ? color : vars.clrPicker(currVal / Convert.ToSingle(maxVal));
-
-		vars.questDisplayNames.Add(use, new Label {
-			Location = new System.Drawing.Point(5, 5 + textOffset * 13), ForeColor = clr, AutoSize = true,
-			Text = (count == 1 || isHeader ? "" : "    ") + (vars.allQuests.ContainsKey(use) ? vars.allQuests[use] : cleanString(use))
-		});
-
-		if (!isHeader)
-			vars.questDisplayNumbers.Add(use, new Label {
-				Location = new System.Drawing.Point(440, 5 + textOffset * 13), ForeColor = clr, AutoSize = true,
-				Text = currVal + "/" + maxVal + " (" + Math.Round(currVal / maxVal * 100, 2) + "%)"
-			});
-
-		textOffset++;
-	});
-
-	IntPtr currQuest = IntPtr.Zero;
+  vars.taskCompletionWatchers = new MemoryWatcherList();
+  vars.taskMaxWatchers = new MemoryWatcherList();
+  IntPtr currQuest = IntPtr.Zero;
 	for (int questID = 0; questID < current.goalCount; ++questID) {
 		new DeepPointer("mono-2.0-bdwgc.dll", 0x494A90, 0xD00, 0x0, 0x250, 0x40, 0x10, 0x30, 0x10, 0x20 + questID * 0x8).DerefOffsets(game, out currQuest);
-		var questName = new StringWatcher(new DeepPointer(currQuest, 0x18, 0x14), 120); questName.Update(game);
 		var taskCount = new MemoryWatcher<int>(new DeepPointer(currQuest, 0x30, 0x18)); taskCount.Update(game);
 
 		for (int taskID = 0; taskID < taskCount.Current; ++taskID) {
 			var taskName = new StringWatcher(new DeepPointer(currQuest, 0x30, 0x10, 0x20 + taskID * 0x8, 0x18, 0x14), 120); taskName.Update(game);
-			var taskMaxVal = new MemoryWatcher<int>(new DeepPointer(currQuest, 0x30, 0x10, 0x20 + taskID * 0x8, 0x28)); taskMaxVal.Update(game);
-			var taskCurrVal = new MemoryWatcher<float>(new DeepPointer(currQuest, 0x30, 0x10, 0x20 + taskID * 0x8, 0x2C)); taskCurrVal.Update(game);
-
 			vars.taskMaxWatchers.Add(new MemoryWatcher<int>(new DeepPointer(
 				"mono-2.0-bdwgc.dll", 0x494A90, 0xD00, 0x0, 0x250, 0x40, 0x10, 0x30, 0x10, 0x20 + questID * 0x8, 0x30, 0x10, 0x20 + taskID * 0x8, 0x28))
 				{Name = taskName.Current}
 			);
+
 			vars.taskCompletionWatchers.Add(new MemoryWatcher<float>(new DeepPointer(
 				"mono-2.0-bdwgc.dll", 0x494A90, 0xD00, 0x0, 0x250, 0x40, 0x10, 0x30, 0x10, 0x20 + questID * 0x8, 0x30, 0x10, 0x20 + taskID * 0x8, 0x2C))
 				{Name = taskName.Current}
 			);
-
-			if (taskCount.Current != 1 && !vars.questDisplayNames.ContainsKey(questName.Current))
-				questAdd(questName.Current, taskCount.Current, vars.clr["txtGray"], taskCurrVal.Current, taskMaxVal.Current);
-			questAdd(taskName.Current, taskCount.Current, vars.clr["red"], taskCurrVal.Current, taskMaxVal.Current);
 		}
-		textOffset++;
-	}
-
-	foreach (var l in vars.questDisplayNames) vars.popUpForm.Controls.Add(l.Value);
-	foreach (var l in vars.questDisplayNumbers) vars.popUpForm.Controls.Add(l.Value);
-	if (settings["helpBox"]) vars.openForm();
-	vars.scrollOffset = 0;
-
-	print("Init completed in " + vars.stopWatch.ElapsedMilliseconds.ToString() + "ms!");
-	vars.stopWatch.Reset();
-}
-
-update {
-	vars.formIsOpen = vars.popUpForm.Text != "";
-	current.formSetting = settings["helpBox"];
-	if (!old.formSetting && current.formSetting) vars.openForm();
-
-	vars.taskMaxWatchers.UpdateAll(game);
-	vars.taskCompletionWatchers.UpdateAll(game);
-	foreach (var task in vars.taskCompletionWatchers)
-		if (task.Changed) {
-			int taskMax = vars.taskMaxWatchers[task.Name].Current;
-			float completionPercentage = task.Current / taskMax;
-
-			if (completionPercentage == 1.0 && settings[task.Name] && settings.SplitEnabled) vars.timerModel.Split();
-
-			if (!vars.formIsOpen) return true;
-			var nameLabel = vars.questDisplayNames[task.Name];
-			var numberLabel = vars.questDisplayNumbers[task.Name];
-
-			nameLabel.ForeColor = vars.clrPicker(completionPercentage);
-			numberLabel.ForeColor = vars.clrPicker(completionPercentage);
-			numberLabel.Text = task.Current + "/" + taskMax + " (" + Math.Round(completionPercentage * 100, 2) + "%)";
-			vars.popUpForm.ScrollControlIntoView(numberLabel);
-			vars.scrollOffset = vars.popUpForm.VerticalScroll.Value;
-		}
-
-	if (!vars.formIsOpen) return true;
-	if (!vars.popUpForm.IsHandleCreated) {}
-	if (old.formSetting && !current.formSetting) vars.popUpForm.Close();
+  }
 }
 
 start {
@@ -273,10 +149,14 @@ start {
 }
 
 split {
-	if (!settings["scrollBox"] || !vars.formIsOpen) return false;
-	int scrolling = Convert.ToInt32((Math.Floor(timer.CurrentTime.RealTime.Value.TotalSeconds * 100 * vars.scrollSpeed) + vars.scrollOffset) % 829);
-	vars.popUpForm.VerticalScroll.Value = scrolling;
-	if (scrolling >= 829) vars.scrollOffset = 0;
+	vars.taskMaxWatchers.UpdateAll(game);
+	vars.taskCompletionWatchers.UpdateAll(game);
+  foreach (var task in vars.taskCompletionWatchers)
+    if (task.Changed) {
+      int taskMax = vars.taskMaxWatchers[task.Name].Current;
+      int taskCurr = Math.Floor(task.Current);
+      return taskCurr == taskMax && settings[task.Name];
+    }
 }
 
 reset {
@@ -289,14 +169,4 @@ gameTime {
 
 isLoading {
 	return true;
-}
-
-exit {
-	vars.timerModel.Reset();
-	try { vars.popUpForm.Close(); } catch {}
-}
-
-shutdown {
-	try { vars.popUpForm.Close(); } catch {}
-	vars.popUpForm.FormClosed -= vars.resetText;
 }
