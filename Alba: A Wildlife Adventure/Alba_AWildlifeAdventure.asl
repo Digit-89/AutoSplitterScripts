@@ -5,7 +5,7 @@ state("Alba") {
 }
 
 startup {
-  vars.stopWatch = new Stopwatch();
+	vars.stopWatch = new Stopwatch();
 
 	var tB = (Func<string, string, string, Tuple<string, string, string>>) ((elmt1, elmt2, elmt3) => { return Tuple.Create(elmt1, elmt2, elmt3); });
 	var questSettings = new List<Tuple<string, string, string>> {
@@ -122,9 +122,9 @@ init {
 	while (current.goalCount == 0)
 		if (vars.stopWatch.ElapsedMilliseconds >= 1000) throw new Exception("Game has not fully initialized yet!");
 
-  vars.taskCompletionWatchers = new MemoryWatcherList();
-  vars.taskMaxWatchers = new MemoryWatcherList();
-  IntPtr currQuest = IntPtr.Zero;
+	vars.taskCompletionWatchers = new MemoryWatcherList();
+	vars.taskMaxWatchers = new MemoryWatcherList();
+	IntPtr currQuest = IntPtr.Zero;
 	for (int questID = 0; questID < current.goalCount; ++questID) {
 		new DeepPointer("mono-2.0-bdwgc.dll", 0x494A90, 0xD00, 0x0, 0x250, 0x40, 0x10, 0x30, 0x10, 0x20 + questID * 0x8).DerefOffsets(game, out currQuest);
 		var taskCount = new MemoryWatcher<int>(new DeepPointer(currQuest, 0x30, 0x18)); taskCount.Update(game);
@@ -141,7 +141,7 @@ init {
 				{Name = taskName.Current}
 			);
 		}
-  }
+	}
 }
 
 start {
@@ -151,12 +151,12 @@ start {
 split {
 	vars.taskMaxWatchers.UpdateAll(game);
 	vars.taskCompletionWatchers.UpdateAll(game);
-  foreach (var task in vars.taskCompletionWatchers)
-    if (task.Changed) {
-      int taskMax = vars.taskMaxWatchers[task.Name].Current;
-      int taskCurr = Math.Floor(task.Current);
-      return taskCurr == taskMax && settings[task.Name];
-    }
+	foreach (var task in vars.taskCompletionWatchers)
+		if (task.Changed) {
+			int taskMax = vars.taskMaxWatchers[task.Name].Current;
+			int taskCurr = Math.Floor(task.Current);
+			return taskCurr == taskMax && settings[task.Name];
+		}
 }
 
 reset {
