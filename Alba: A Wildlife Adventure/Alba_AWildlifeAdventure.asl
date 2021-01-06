@@ -63,13 +63,10 @@ startup {
 			tB("QG_Mayor_Investigation", "QT_Scan_the_Mayor_3", "Scan the Mayor 3"),
 			tB("QG_Mayor_Investigation", "QT_Scan_the_Mayor_4", "Scan the Mayor 4"),
 			tB("QG_Mayor_Investigation", "QT_Use_the_Scanner_to_see_whats_in_the_briefcase", "Use the Scanner to see whats in the briefcase"),
-		tB("Main Quests", "QG_Seeking_Alba", "Seeking Alba"),
-			tB("QG_Seeking_Alba", "QT_Search_For_Alba_Woods", "Find Alba's Phone"),
-			tB("QG_Seeking_Alba", "QT_Scan_the_Lynx", "Scan the Lynx"),
+		tB("Main Quests", "QT_Scan_the_Lynx", "Scan the Lynx"),
 		tB("Main Quests", "QG_Summer_Festival", "Summer Festival"),
 			tB("QG_Summer_Festival", "QT_Summer_Festival_Enjoy", "Summer Festival Enjoy"),
 			tB("QG_Summer_Festival", "QT_Summer_Festival", "Summer Festival"),
-		tB("Main Quests", "QT_DayEnd", "Day End"),
 
 		tB("Side Quests", "QG_Nature_Reserve_SQ", "Nature Reserve"),
 			tB("QG_Nature_Reserve_SQ", "QT_Fix_up_the_old_Nature_Reserve", "Fix up the old Nature Reserve"),
@@ -111,6 +108,8 @@ startup {
 			tB("QG_Marina_and_Socks", "QT_Return_lost_dog_to_owner", "Return lost dog to owner")
 	};
 
+	settings.Add("dayEnd", true, "Split when the next day starts");
+		settings.SetToolTip("dayEnd", "This splits when the player is able to\nperform the first input on the next day.");
 	settings.Add("Main Quests");
 	settings.Add("Side Quests");
 
@@ -157,6 +156,8 @@ split {
 			int taskCurr = Math.Floor(task.Current);
 			return taskCurr == taskMax && settings[task.Name];
 		}
+
+	return current.activeStage == old.activeStage + 1 && settings["dayEnd"];
 }
 
 reset {
