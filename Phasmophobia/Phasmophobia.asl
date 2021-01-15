@@ -65,14 +65,14 @@ init {
 	vars.allPlayersAreConnected = new MemoryWatcher<bool>(new DeepPointer(levelControllerPtr, 0xB8, 0x0, 0x88, 0x68));
 	vars.isLoadingBackToMenu    = new MemoryWatcher<bool>(new DeepPointer(levelControllerPtr, 0xB8, 0x0, 0x88, 0x69));
 
-  vars.allWatchers = new MemoryWatcherList{
-    vars.isTutorial, vars.miss1Completed, vars.miss2Completed, vars.miss3Completed, vars.miss4Completed,
-    vars.evidence1Index, vars.evidence2Index, vars.evidence3Index, vars.ghostTypeIndex, vars.allPlayersAreConnected, vars.isLoadingBackToMenu
-  };
+	vars.allWatchers = new MemoryWatcherList{
+		vars.isTutorial, vars.miss1Completed, vars.miss2Completed, vars.miss3Completed, vars.miss4Completed,
+		vars.evidence1Index, vars.evidence2Index, vars.evidence3Index, vars.ghostTypeIndex, vars.allPlayersAreConnected, vars.isLoadingBackToMenu
+	};
 }
 
 update {
-  vars.allWatchers.UpdateAll(game);
+	vars.allWatchers.UpdateAll(game);
 	vars.miss = new[] {vars.miss1Completed.Current, vars.miss2Completed.Current, vars.miss3Completed.Current, vars.miss4Completed.Current}.All(x => x == true);
 	vars.evid = new[] {vars.evidence1Index.Current, vars.evidence2Index.Current, vars.evidence3Index.Current, vars.ghostTypeIndex.Current}.All(x => x != 0);
 	current.phase = timer.CurrentPhase;
