@@ -7,11 +7,11 @@ state("yapp") {
 
 startup {
 	for (int wrld = 1; wrld <= 7; ++wrld) {
-		string header = "World " + wrld + " Splits:";
-		settings.Add(header);
+		string parent = "World " + wrld + " Splits:";
+		settings.Add(parent);
 
 		for (int lvl = 1; lvl <= 8; ++lvl)
-			settings.Add("w" + wrld + "l" + lvl, true, lvl == 8 ? "Castle" : "Level " + lvl, header);
+			settings.Add("w" + wrld + "l" + lvl, true, lvl == 8 ? "Castle" : "Level " + lvl, parent);
 	}
 }
 
