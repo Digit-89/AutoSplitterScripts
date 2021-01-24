@@ -6,9 +6,17 @@ state("yapp") {
 }
 
 startup {
-	vars.tM = new TimerModel {CurrentState = timer};
+	for (int wrld = 1; wrld <= 7; ++wrld) {
+		string header = "World " + wrld + " Splits:";
+		settings.Add(header);
 
-	vars.startIndex = new Dictionary<int, int> {
+		for (int lvl = 1; lvl <= 8; ++lvl)
+			settings.Add("w" + wrld + "l" + lvl, true, lvl == 8 ? "Castle" : "Level " + lvl, header);
+	}
+}
+
+init {
+	var startIndex = new Dictionary<int, int> {
 		{1, 10},
 		{2, 20},
 		{3, 30},
@@ -18,20 +26,11 @@ startup {
 		{7, 70},
 	};
 
-	for (int wrld = 1; wrld <= 7; ++wrld) {
-		string header = "World " + wrld + " Splits:";
-		settings.Add(header);
-		for (int lvl = 1; lvl <= 8; ++lvl)
-			settings.Add("l" + (vars.startIndex[wrld] + lvl), true, lvl == 8 ? "Castle" : "Level " + lvl, header);
-	}
-}
-
-init {
 	vars.solvedWatchers = new MemoryWatcherList();
 
 	for (int wrld = 1; wrld <= 7; ++wrld)
 		for (int lvl = 1; lvl <= 8; ++lvl)
-			vars.solvedWatchers.Add(new MemoryWatcher<bool>(new DeepPointer("mono.dll", 0x263110, 0xA0, 0x20, 0x10, 0x20 + vars.startIndex[wrld] + lvl)) {Name = "l" + (vars.startIndex[wrld] + lvl).ToString()});
+			vars.solvedWatchers.Add(new MemoryWatcher<bool>(new DeepPointer("mono.dll", 0x263110, 0xA0, 0x20, 0x10, 0x20 + startIndex[wrld] + lvl)) {Name = "w" + wrld + "l" + lvl});
 }
 
 start {
@@ -40,6 +39,7 @@ start {
 
 split {
 	vars.solvedWatchers.UpdateAll(game);
+
 	foreach (var watcher in vars.solvedWatchers)
 		if (watcher.Changed && watcher.Current)
 			return settings[watcher.Name];
@@ -47,8 +47,4 @@ split {
 
 reset {
 	return old.location == 2 && current.location == 1;
-}
-
-exit {
-	vars.tM.Reset();
 }
