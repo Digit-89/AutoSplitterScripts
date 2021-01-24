@@ -8,7 +8,6 @@ Starts the timer when loading into the game. Resets when starting a new file or 
 * open your split file (any category) and Right Click LiveSplit 🡆 Edit Splits...
 * make sure the game name is set to "Alba: A Wildlife Adventure"
 * above your splits, an "Activate" button will appear, which you need to click
-* set LiveSplit to compare against Game Time (Right Click LiveSplit 🡆 Compare Against 🡆 Game Time)
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/alba](https://speedrun.com/alba_a_wildlife_adventure)*  
