@@ -16,21 +16,11 @@ startup {
 }
 
 init {
-	var startIndex = new Dictionary<int, int> {
-		{1, 10},
-		{2, 20},
-		{3, 30},
-		{4, 40},
-		{5, 50},
-		{6, 60},
-		{7, 70},
-	};
-
 	vars.solvedWatchers = new MemoryWatcherList();
 
 	for (int wrld = 1; wrld <= 7; ++wrld)
 		for (int lvl = 1; lvl <= 8; ++lvl)
-			vars.solvedWatchers.Add(new MemoryWatcher<bool>(new DeepPointer("mono.dll", 0x263110, 0xA0, 0x20, 0x10, 0x20 + startIndex[wrld] + lvl)) {Name = "w" + wrld + "l" + lvl});
+			vars.solvedWatchers.Add(new MemoryWatcher<bool>(new DeepPointer("mono.dll", 0x263110, 0xA0, 0x20, 0x10, 0x20 + 10 * wrld + lvl)) {Name = "w" + wrld + "l" + lvl});
 }
 
 start {
