@@ -12,7 +12,7 @@ Starts the timer when loading into the game. Resets when starting a new file or 
 ## Game Links
 *Leaderboards: [speedrun.com/alba](https://speedrun.com/alba_a_wildlife_adventure)*  
 *Website: [albawildlife.com](https://albawildlife.com)*  
-*Game: [store.steampowered.com/app/1337010](https://store.steampowered.com/app/1337010) ($16.99)*
+*Game: [s.team/a/1337010](https://s.team/a/1337010) ($16.99)*
 ​  
 ​  
 ​
