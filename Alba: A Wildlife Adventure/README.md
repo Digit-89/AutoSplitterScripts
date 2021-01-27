@@ -10,7 +10,7 @@ Starts the timer when loading into the game. Resets when starting a new file or 
 * above your splits, an "Activate" button will appear, which you need to click
 * done!
 ## Game Links
-*Leaderboards: [speedrun.com/alba](https://speedrun.com/alba_a_wildlife_adventure)*  
+*Leaderboards: [speedrun.com/alba](https://speedrun.com/alba)*  
 *Website: [albawildlife.com](https://albawildlife.com)*  
 *Game: [s.team/a/1337010](https://s.team/a/1337010) ($16.99)*
 ​  
