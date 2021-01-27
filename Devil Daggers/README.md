@@ -13,7 +13,7 @@ Starts and resets automatically. Splits when the next wave starts.
 ## Game Links
 *Leaderboards: [speedrun.com/devil_daggers](https://speedrun.com/devil_daggers)*  
 *Website: [devildaggers.com](https://devildaggers.com)*  
-*Game: [store.steampowered.com/app/422970](https://store.steampowered.com/app/422970) ($4.99)*
+*Game: [store.steampowered.com/app/422970](https://s.team/a/422970) ($4.99)*
 ​  
 ​  
 ​
