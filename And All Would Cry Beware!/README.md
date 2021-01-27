@@ -9,8 +9,8 @@ Splits can be chosen in the settings. Starts the timer and splits upon reaching 
 * above your splits, an "Activate" button will appear, which you need to click
 * done!
 ## Game Links
-*Leaderboards: [speedrun.com/and_all_would_cry_beware](https://speedrun.com/and_all_would_cry_beware)*  
-*Game: [store.steampowered.com/app/1071510](https://store.steampowered.com/app/1071510) ($9.99)*
+*Leaderboards: [speedrun.com/aawcb](https://speedrun.com/aawcb)*  
+*Game: [s.team/a/1071510](https://s.team/a/1071510) ($9.99)*
 ​  
 ​  
 ​
