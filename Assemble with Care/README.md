@@ -11,7 +11,7 @@ Starts and resets the timer simultaneously when resetting progress. Splits after
 ## Game Links
 *Leaderboards: [speedrun.com/awc](https://speedrun.com/awc)*  
 *Website: [assemblegame.com](https://assemblegame.com)*  
-*Game: [store.steampowered.com/app/1202900](https://store.steampowered.com/app/1202900) ($9.99)*
+*Game: [s.team/a/1202900](https://s.team/a/1202900) ($9.99)*
 ​  
 ​  
 ​
