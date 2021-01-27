@@ -11,8 +11,8 @@ Splits can be chosen in the settings. Does not automatically start the timer. Do
 ## Game Links
 *Leaderboards: [speedrun.com/donutcounty](https://speedrun.com/donutcounty)*  
 *Discord: [discord.gg/V3chU5S](https://discord.gg/V3chU5S)*  
-*Website: [donutcounty.com](http://www.donutcounty.com/)*  
-*Game: [store.steampowered.com/app/702670](https://store.steampowered.com/app/702670) ($12.99)*
+*Website: [donutcounty.com](http://donutcounty.com/)*  
+*Game: [store.steampowered.com/app/702670](https://s.team/a/702670) ($12.99)*
 ​  
 ​  
 ​
