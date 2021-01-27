@@ -13,7 +13,7 @@ Does not split perfectly at the end of a run.
 *Leaderboards: https://speedrun.com/frogmag2*  
 *Discord: https://discordapp.gg/czC4PZW*  
 *Website: https://frogdetective.net*  
-*Game: https://store.steampowered.com/app/1047220 ($4.49)*
+*Game: https://s.team/a/1047220 ($4.49)*
 ​  
 ​  
 ​
