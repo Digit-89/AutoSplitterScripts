@@ -12,7 +12,7 @@ Starts automatically. Splits when closing the truck and having completed the tas
 ## Game Links
 *Leaderboards: [speedrun.com/phasmophobia](https://speedrun.com/phasmophobia)*  
 *Website: [kineticgames.co.uk](https://kineticgames.co.uk)*  
-*Game: [store.steampowered.com/app/739630](https://store.steampowered.com/app/739630) ($13.99)*
+*Game: [s.team/a/739630](https://s.team/a/739630) ($13.99)*
 ​  
 ​  
 ​
