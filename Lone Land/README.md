@@ -10,7 +10,7 @@ Automatically starts the timer. Splits when collecting the 1st large pillar crys
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/lone_land](https://www.speedrun.com/lone_land)*  
-*Game: [store.steampowered.com/app/1216590](https://store.steampowered.com/app/1216590) ($0.99)*
+*Game: [s.team/a/1216590](https://s.team/a/1216590) ($0.99)*
 ​  
 ​  
 ​
