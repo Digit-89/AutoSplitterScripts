@@ -12,7 +12,7 @@ Only works in Speed Mode. Automatically starts the timer. Splits can be chosen i
 ## Game Links
 *Leaderboards: [speedrun.com/mo_astray](https://speedrun.com/mo_astray)*  
 *Website: [moastray.game](https://moastray.game/en)*  
-*Game: [store.steampowered.com/app/1104660](https://store.steampowered.com/app/1104660) ($14.99)*
+*Game: [s.team/a/1104660](https://s.team/a/1104660) ($14.99)*
 ​  
 ​  
 ​
