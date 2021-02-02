@@ -13,7 +13,7 @@ Starts automatically when loading into the first stage. Splits can be chosen in 
 ## Game Links
 *Leaderboards: [speedrun.com/gunfire_reborn](https://speedrun.com/gunfire_reborn)*  
 *Website: [gunfire.herojoys.com](https://gunfire.herojoys.com/en)*  
-*Game: [store.steampowered.com/app/1217060](https://store.steampowered.com/app/1217060) ($11.99)*
+*Game: [s.team/a/1217060](https://s.team/a/1217060) ($11.99)*
 ​  
 ​  
 ​
