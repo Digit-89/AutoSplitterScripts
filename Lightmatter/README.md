@@ -14,7 +14,7 @@ Starts the timer at the same time when pressing "Retry" in a level. Splits when 
 *Leaderboards: [speedrun.com/lightmatter](https://speedrun.com/lightmatter)*  
 *Discord: [discord.gg/lightmatter](https://discord.gg/lightmatter)*  
 *Website: [tunnelvisiongames.com](http://tunnelvisiongames.com)*  
-*Game: [store.steampowered.com/app/994140](https://store.steampowered.com/app/994140) ($19.99)*
+*Game: [s.team/a/994140](https://s.team/a/994140) ($19.99)*
 ​  
 ​  
 ​
