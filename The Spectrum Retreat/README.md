@@ -11,7 +11,7 @@ Splits can be chosen in the settings. Starts the timer 0.5 seconds early (put ti
 ## Game Links
 *Leaderboards: [speedrun.com/spectrum_retreat](https://speedrun.com/spectrum_retreat)*  
 *Website: [dansmithstudios.com/the-spectrum-retreat](https://dansmithstudios.com/the-spectrum-retreat)*  
-*Game: [store.steampowered.com/app/763250](https://store.steampowered.com/app/763250)($12.99)*
+*Game: [s.team/a/763250](https://s.team/a/763250)($12.99)*
 ​  
 ​  
 ​
