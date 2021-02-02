@@ -12,7 +12,7 @@ Pauses the timer during every loading screen. Starts the timer when the player e
 ## Game Links
 *Leaderboards: [speedrun.com/helloneighbor](https://speedrun.com/helloneighbor)*  
 *Website: [helloneighborgame.com](https://helloneighborgame.com)*  
-*Game: [store.steampowered.com/app/521890](https://store.steampowered.com/app/521890) ($29.99)*
+*Game: [s.team/a/521890](https://s.team/a/521890) ($29.99)*
 ​  
 ​  
 ​
