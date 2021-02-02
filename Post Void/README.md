@@ -12,7 +12,7 @@ Automatically starts the timer. Splits can be chosen in the settings. Resets whe
 ## Game Links
 *Leaderboards: [speedrun.com/post_void](https://speedrun.com/post_void)*  
 *Website: [whycjwhy.com](http://whycjwhy.com)*  
-*Game: [store.steampowered.com/app/1285670](https://store.steampowered.com/app/1285670) ($2.99)*
+*Game: [s.team/a/1285670](https://s.team/a/1285670) ($2.99)*
 ​  
 ​  
 ​
