@@ -11,7 +11,7 @@ Starts the timer when the player starts moving. Splits can be chosen in the sett
 ## Game Links
 *Leaderboards: [speedrun.com/the_pedestrian](https://speedrun.com/the_pedestrian)*  
 *Website: [skookum-arts.com](https://skookum-arts.com)*  
-*Game: [store.steampowered.com/app/466630](https://store.steampowered.com/app/466630) ($19.99)*
+*Game: [s.team/a/466630](https://s.team/a/466630) ($19.99)*
 ​  
 ​  
 ​
