@@ -11,7 +11,7 @@ Splits after every level, can be adjusted in the settings. Resets when the playe
 * done!
 ## Game Links
 *Leaderboards: [speedrun.com/yapp](https://speedrun.com/yapp)*  
-*Game: [store.steampowered.com/app/745250](https://store.steampowered.com/app/745250) ($1.99)*
+*Game: [s.team/a/745250](https://s.team/a/745250) ($1.99)*
 ​  
 ​  
 ​
