@@ -23,6 +23,7 @@ startup {
 }
 
 init {
+	vars.sW.Start();
 	// SigScan code by 2838.
 	Func<IntPtr, int, int, IntPtr> getPointerFromOpcode = (ptr, trgOperandOffset, totalSize) => {
 		byte[] bytes = memory.ReadBytes(ptr + trgOperandOffset, 4);
@@ -43,11 +44,16 @@ init {
 	IntPtr levelValuesPtr = IntPtr.Zero;
 	IntPtr levelControllerPtr = IntPtr.Zero;
 
-	bool sigsFound = false;
-	while (!sigsFound) {
+	vars.sigsFound = false;
+	while (!vars.sigsFound) {
 		levelValuesPtr = getPointerFromOpcode(assemblyScanner.Scan(levelValuesSig), 3, 7);
 		levelControllerPtr = getPointerFromOpcode(assemblyScanner.Scan(levelControllerSig), 3, 7);
-		sigsFound = new[]{levelValuesPtr, levelControllerPtr}.All(x => x != IntPtr.Zero);
+		vars.sigsFound = new[]{levelValuesPtr, levelControllerPtr}.All(x => x != IntPtr.Zero);
+		if (vars.sW.ElapsedMilliseconds >= 5000) {
+			MessageBox.Show("Could not find pointers because the signatures aren't unique!", "Phasmophobia Auto Splitter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			vars.sW.Reset();
+			break;
+		}
 	}
 
 	print("Found LevelValues    : 0x" + levelValuesPtr.ToString("X"));
@@ -72,6 +78,7 @@ init {
 }
 
 update {
+	if (!vars.sigsFound) return false;
 	vars.allWatchers.UpdateAll(game);
 	vars.miss = new[] {vars.miss1Completed.Current, vars.miss2Completed.Current, vars.miss3Completed.Current, vars.miss4Completed.Current}.All(x => x == true);
 	vars.evid = new[] {vars.evidence1Index.Current, vars.evidence2Index.Current, vars.evidence3Index.Current, vars.ghostTypeIndex.Current}.All(x => x != 0);
