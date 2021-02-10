@@ -40,7 +40,7 @@ init {
 
 	// Additional thanks to 2838's Ghidra signature script.
 	var levelValuesSig = new SigScanTarget(9, "E8 ???????? 84 C0 75 ?? 48 8B 05 ???????? 48 8B 80 B8 00 00 00 48 8B 00 48 83 C4 20 5B C3");
-	var levelControllerSig = new SigScanTarget(4, "84 C0 74 ?? 48 8B 05 ???????? 48 8B 88 B8 00 00 00 48 8B 01 48 85 C0 0F 84 ?? 00 00 00 48 8B 40 28 48 85 C0 0F 84 ?? 00 00 00");
+	var levelControllerSig = new SigScanTarget(0, "48 8B 05 ???????? 48 8B 88 B8 00 00 00 48 8B 01 48 85 C0 0F 84 ?? 00 00 00 48 8B 40 28 48 85 C0 0F 84 ?? 00 00 00");
 	IntPtr levelValuesPtr = IntPtr.Zero;
 	IntPtr levelControllerPtr = IntPtr.Zero;
 
