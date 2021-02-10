@@ -49,7 +49,7 @@ init {
 		levelValuesPtr = getPointerFromOpcode(assemblyScanner.Scan(levelValuesSig), 3, 7);
 		levelControllerPtr = getPointerFromOpcode(assemblyScanner.Scan(levelControllerSig), 3, 7);
 		vars.sigsFound = new[]{levelValuesPtr, levelControllerPtr}.All(x => x != IntPtr.Zero);
-		if (vars.sW.ElapsedMilliseconds >= 5000) {
+		if (vars.sW.ElapsedMilliseconds >= 15000) {
 			MessageBox.Show("Could not find pointers because the signatures aren't unique!", "Phasmophobia Auto Splitter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			vars.sW.Reset();
 			break;
