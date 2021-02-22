@@ -1,4 +1,3 @@
-
 # Door Kickers: Action Squad Autosplitter
 ## Information
 An autosplitter for Door Kickers: Action Squad.
