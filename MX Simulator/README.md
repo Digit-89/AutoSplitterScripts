@@ -1,4 +1,4 @@
-# Door Kickers: Action Squad Autosplitter
+# MX Simulator Autosplitter
 ## Information
 An autosplitter for MX Simulator.
 
